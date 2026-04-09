@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jeenat Mehareen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a18;
+      --muted: #6b6b5f;
+      --pale: #f5f3ee;
+      --accent: #8b6f47;
+      --line: #d9d4c7;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--pale);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    body {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 3.5rem 4rem 2rem;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .name-block h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .name-block h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .name-block p {
+      margin-top: 0.6rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .header-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
+    }
+
+    .header-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .header-links a:hover { color: var(--accent); }
+
+    /* ── MAIN ── */
+    main {
+      display: grid;
+      grid-template-columns: 1fr 2.6fr;
+      gap: 0;
+    }
+
+    /* ── SIDEBAR ── */
+    aside {
+      border-right: 1px solid var(--line);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .sidebar-section h2 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-section p,
+    .sidebar-section li {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+    }
+
+    .sidebar-section ul li::before {
+      content: '—';
+      color: var(--accent);
+      margin-right: 0.5em;
+      font-weight: 300;
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .download-btn:hover {
+      background: var(--accent);
+      color: var(--pale);
+    }
+
+    /* ── PDF VIEWER ── */
+    .pdf-section {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .pdf-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .pdf-frame-wrap {
+      flex: 1;
+      border: 1px solid var(--line);
+      background: #fff;
+      min-height: 75vh;
+    }
+
+    .pdf-frame-wrap iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 75vh;
+      border: none;
+      display: block;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      header { padding: 2rem 1.5rem 1.5rem; }
+      .header-links { align-items: flex-start; }
+      main { grid-template-columns: 1fr; }
+      aside { border-right: none; border-bottom: 1px solid var(--line); padding: 2rem 1.5rem; }
+      .pdf-section { padding: 2rem 1.5rem; }
+      footer { padding: 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="name-block">
+      <h1>Jeenat <em>Mehareen</em></h1>
+      <p>PhD Candidate &nbsp;·&nbsp; Pharmaceutical Sciences, UBC &nbsp;·&nbsp; Vancouver, BC</p>
+    </div>
+    <nav class="header-links">
+      <a href="mailto:jeenatm@student.ubc.ca">jeenatm@student.ubc.ca</a>
+      <a href="https://www.linkedin.com/in/jeenat" target="_blank">LinkedIn ↗</a>
+      <a href="https://scholar.google.com/citations?user=DH1aoBIAAAAJ" target="_blank">Google Scholar ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <aside>
+      <div class="sidebar-section">
+        <h2>About</h2>
+        <p>PhD Candidate in Pharmaceutical Sciences at the University of British Columbia, supervised by Dr. Mohsen Sadatsafavi. Research focuses on respiratory epidemiology, health economics, and evidence generation for COPD and related diseases.</p>
+      </div>
+
+      <div class="sidebar-section">
+        <h2>Research Interests</h2>
+        <ul>
+          <li>COPD &amp; respiratory epidemiology</li>
+          <li>Health economics &amp; outcomes</li>
+          <li>Population-based data analysis</li>
+          <li>Clinical prediction models</li>
+          <li>Knowledge translation</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h2>Recent Awards</h2>
+        <ul>
+          <li>MITACS Globalink Research Award (2026)</li>
+          <li>UBC KxM Research to Impact Award (2025)</li>
+          <li>Canadian Lung Association Studentship (2024–2025)</li>
+          <li>SSHRC CGS-M (2021–2021)</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h2>Download</h2>
+        <a class="download-btn" href="CV_Jeenat_Mehareen.pdf" download>↓ Download CV</a>
+      </div>
+    </aside>
+
+    <section class="pdf-section">
+      <p class="pdf-label">Full CV — PDF</p>
+      <div class="pdf-frame-wrap">
+        <iframe src="CV_Jeenat_Mehareen.pdf" title="Jeenat Mehareen — CV"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Jeenat Mehareen &nbsp;·&nbsp; PhD Candidate, Pharmaceutical Sciences, UBC</p>
+    <p>jeenatm.github.io</p>
+  </footer>
+
+</body>
+</html>
