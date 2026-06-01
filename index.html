@@ -25,7 +25,7 @@ header{padding:2.5rem 3rem 2rem;border-bottom:1px solid var(--line);display:flex
 .name-block h1 em{font-style:italic;color:var(--accent)}
 .name-block p{margin-top:0.4rem;font-family:'DM Mono',monospace;font-size:0.76rem;font-weight:300;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted)}
 .header-right{display:flex;flex-direction:column;align-items:flex-end;gap:0.8rem}
-.header-links{display:flex;flex-direction:column;align-items:flex-end;gap:0.4rem}
+.header-links{display:flex;flex-direction:row;align-items:center;gap:1.5rem;flex-wrap:wrap}
 .header-links a{font-family:'DM Mono',monospace;font-size:0.76rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;transition:color 0.2s}
 .header-links a:hover{color:var(--accent)}
 
@@ -41,7 +41,13 @@ header{padding:2.5rem 3rem 2rem;border-bottom:1px solid var(--line);display:flex
 .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-light)}
 
 /* ── LAYOUT ── */
-.layout{padding:3rem 4rem 4rem;max-width:860px}
+.layout{display:flex;flex-direction:row;min-height:calc(100vh - 130px);max-width:1200px;margin:0 auto;width:100%}
+.sidebar{width:220px;min-width:220px;flex-shrink:0;border-right:1px solid var(--line);padding:2rem 0;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--pale)}
+.sidebar nav{display:flex;flex-direction:column}
+.sidebar-btn{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);background:none;border:none;border-left:3px solid transparent;padding:0.85rem 1.6rem;cursor:pointer;text-align:left;transition:color 0.2s,border-color 0.2s,background 0.2s;white-space:nowrap;width:100%}
+.sidebar-btn:hover{color:var(--ink);background:rgba(0,0,0,0.02)}
+.sidebar-btn.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-light)}
+.content{flex:1;padding:3rem 4rem 4rem;overflow-y:auto;max-width:860px}
 .tab-panel{display:none}
 .tab-panel.active{display:block}
 
@@ -129,30 +135,28 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
       <p>PhD Candidate &nbsp;&middot;&nbsp; Pharmaceutical Sciences, UBC &nbsp;&middot;&nbsp; Vancouver, BC</p>
     </div>
   </div>
-  <div class="header-right">
-    <nav class="header-links">
-      <a href="javascript:void(0)" onclick="window.location='mai'+'lto:'+'jeenatm'+'@'+'student.ubc.ca'">jeenatm [at] student.ubc.ca</a>
-      <a href="https://www.linkedin.com/in/jeenat" target="_blank">LinkedIn &#8599;</a>
-      <a href="https://scholar.google.com/citations?user=DH1aoBIAAAAJ" target="_blank">Google Scholar &#8599;</a>
-    </nav>
-    <div class="nav-wrapper">
-      <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu &#9662;</button>
-      <div class="nav-dropdown" id="navDropdown">
-        <button class="nav-item active" onclick="showTab('about',this)">About</button>
-        <button class="nav-item" onclick="showTab('education',this)">Education</button>
-        <button class="nav-item" onclick="showTab('experience',this)">Experience</button>
-        <button class="nav-item" onclick="showTab('publications',this)">Publications</button>
-        <button class="nav-item" onclick="showTab('presentations',this)">Presentations</button>
-        <button class="nav-item" onclick="showTab('awards',this)">Awards</button>
-        <button class="nav-item" onclick="showTab('teaching',this)">Teaching</button>
-        <button class="nav-item" onclick="showTab('service',this)">Service &amp; Leadership</button>
-        <button class="nav-item" onclick="showTab('cv',this)">Full CV</button>
-      </div>
-    </div>
-  </div>
+  <nav class="header-links">
+    <a href="javascript:void(0)" onclick="window.location='mai'+'lto:'+'jeenatm'+'@'+'student.ubc.ca'">jeenatm [at] student.ubc.ca</a>
+    <a href="https://www.linkedin.com/in/jeenat" target="_blank">LinkedIn &#8599;</a>
+    <a href="https://scholar.google.com/citations?user=DH1aoBIAAAAJ" target="_blank">Google Scholar &#8599;</a>
+  </nav>
 </header>
 
 <div class="layout">
+  <aside class="sidebar">
+    <nav>
+      <button class="sidebar-btn active" onclick="showTab('about',this)">About</button>
+      <button class="sidebar-btn" onclick="showTab('education',this)">Education</button>
+      <button class="sidebar-btn" onclick="showTab('experience',this)">Experience</button>
+      <button class="sidebar-btn" onclick="showTab('publications',this)">Publications</button>
+      <button class="sidebar-btn" onclick="showTab('presentations',this)">Presentations</button>
+      <button class="sidebar-btn" onclick="showTab('awards',this)">Awards</button>
+      <button class="sidebar-btn" onclick="showTab('teaching',this)">Teaching</button>
+      <button class="sidebar-btn" onclick="showTab('service',this)">Service &amp; Leadership</button>
+      <button class="sidebar-btn" onclick="showTab('cv',this)">Full CV</button>
+    </nav>
+  </aside>
+  <main class="content">
 
     <!-- ABOUT -->
     <div id="tab-about" class="tab-panel active">
@@ -592,9 +596,10 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
       </div>
     </div>
 
-  </div><!-- end layout -->
+  </div><!-- end tab-cv -->
 
-</div><!-- end layout wrapper -->
+  </main><!-- end content -->
+</div><!-- end layout -->
 
 <footer>
   <p>Jeenat Mehareen &nbsp;&middot;&nbsp; PhD Candidate, Pharmaceutical Sciences, UBC</p>
@@ -602,28 +607,13 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
 </footer>
 
 <script>
-function toggleNav(){
-  var btn=document.getElementById('navToggle');
-  var dd=document.getElementById('navDropdown');
-  btn.classList.toggle('open');
-  dd.classList.toggle('open');
-}
-document.addEventListener('click',function(e){
-  var wrapper=document.querySelector('.nav-wrapper');
-  if(!wrapper.contains(e.target)){
-    document.getElementById('navToggle').classList.remove('open');
-    document.getElementById('navDropdown').classList.remove('open');
-  }
-});
 function showTab(name,btn){
   var panels=document.querySelectorAll('.tab-panel');
-  var buttons=document.querySelectorAll('.nav-item');
+  var buttons=document.querySelectorAll('.sidebar-btn');
   for(var i=0;i<panels.length;i++){panels[i].classList.remove('active');}
   for(var i=0;i<buttons.length;i++){buttons[i].classList.remove('active');}
   document.getElementById('tab-'+name).classList.add('active');
   btn.classList.add('active');
-  document.getElementById('navToggle').classList.remove('open');
-  document.getElementById('navDropdown').classList.remove('open');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
