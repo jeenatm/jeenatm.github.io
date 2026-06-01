@@ -14,78 +14,106 @@ gtag('config', 'G-MDRM25BKH3');
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#1a1a18;--muted:#6b6b5f;--pale:#f5f3ee;--accent:#7A1E2C;--accent-light:#f9eced;--line:#d9d4c7}
+:root{--ink:#1a1a18;--muted:#6b6b5f;--pale:#f5f3ee;--accent:#7A1E2C;--accent-light:#f9eced;--line:#d9d4c7;--sidebar-w:240px}
 html,body{background:var(--pale);color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif;min-height:100vh}
-header{padding:3rem 4rem 2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
-.header-left{display:flex;align-items:flex-end;gap:2rem}
-.header-photo{width:90px;height:90px;border-radius:50%;object-fit:cover;border:2px solid var(--line);flex-shrink:0}
-.name-block h1{font-size:clamp(2.8rem,5vw,4.2rem);font-weight:300;letter-spacing:0.04em;line-height:1}
+
+/* ── HEADER ── */
+header{padding:2.5rem 3rem 2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;background:var(--pale)}
+.header-left{display:flex;align-items:center;gap:1.5rem}
+.header-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--line);flex-shrink:0;display:block}
+.name-block h1{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:300;letter-spacing:0.04em;line-height:1}
 .name-block h1 em{font-style:italic;color:var(--accent)}
-.name-block p{margin-top:0.5rem;font-family:'DM Mono',monospace;font-size:0.82rem;font-weight:300;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted)}
+.name-block p{margin-top:0.4rem;font-family:'DM Mono',monospace;font-size:0.76rem;font-weight:300;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted)}
+.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:0.8rem}
 .header-links{display:flex;flex-direction:column;align-items:flex-end;gap:0.4rem}
-.header-links a{font-family:'DM Mono',monospace;font-size:0.82rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.header-links a{font-family:'DM Mono',monospace;font-size:0.76rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;transition:color 0.2s}
 .header-links a:hover{color:var(--accent)}
-.tab-bar{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--line);background:var(--pale);padding:0 4rem;position:sticky;top:0;z-index:10}
-.tab-btn{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;padding:1rem 1.1rem;cursor:pointer;transition:color 0.2s,border-color 0.2s;white-space:nowrap}
-.tab-btn:hover{color:var(--ink)}
-.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
-.tab-panel{display:none;padding:3rem 4rem 4rem;max-width:900px}
+
+/* ── NAV DROPDOWN ── */
+.nav-wrapper{position:relative;display:flex;align-items:center}
+.nav-toggle{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);background:none;border:1px solid var(--line);padding:0.55rem 1.1rem;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.nav-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.nav-toggle.open{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 6px);right:0;background:var(--pale);border:1px solid var(--line);min-width:200px;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,0.08)}
+.nav-dropdown.open{display:block}
+.nav-item{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);background:none;border:none;border-left:3px solid transparent;padding:0.85rem 1.4rem;cursor:pointer;text-align:left;width:100%;display:block;transition:color 0.2s,border-color 0.2s,background 0.2s}
+.nav-item:hover{color:var(--ink);background:rgba(0,0,0,0.02)}
+.nav-item.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-light)}
+
+/* ── LAYOUT ── */
+.layout{padding:3rem 4rem 4rem;max-width:860px}
+.tab-panel{display:none}
 .tab-panel.active{display:block}
+
+/* ── SECTIONS ── */
 .cv-section{margin-bottom:2.8rem}
-.cv-section h2{font-family:'DM Mono',monospace;font-size:0.76rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;padding-bottom:0.4rem;border-bottom:1px solid var(--line)}
-.entry{margin-bottom:1.6rem}
+.cv-section h2{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;padding-bottom:0.4rem;border-bottom:1px solid var(--line)}
+
+/* ── ENTRIES ── */
+.entry{margin-bottom:1.8rem}
 .entry-header{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:0.15rem}
-.entry-title{font-size:1.2rem;font-weight:400;line-height:1.4}
-.entry-date{font-family:'DM Mono',monospace;font-size:0.76rem;letter-spacing:0.1em;color:var(--accent);white-space:nowrap}
-.entry-org{font-size:1rem;color:var(--muted);font-style:italic;margin-bottom:0.35rem}
-.entry-body{font-size:1.1rem;font-weight:300;line-height:1.8;color:var(--ink)}
+.entry-title{font-size:1.15rem;font-weight:400;line-height:1.4}
+.entry-date{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;color:var(--accent);white-space:nowrap}
+.entry-org{font-size:0.98rem;color:var(--muted);font-style:italic;margin-bottom:0.35rem}
+.entry-body{font-size:1.08rem;font-weight:300;line-height:1.8;color:var(--ink)}
 .entry-body ul{list-style:none;margin-top:0.4rem}
 .entry-body ul li{padding-left:1.2em;position:relative;margin-bottom:0.25rem}
 .entry-body ul li::before{content:'○';position:absolute;left:0;color:var(--accent);font-size:0.6em;top:0.35em}
-/* skill tags */
+
+/* ── SKILL TAGS ── */
 .skill-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.5rem}
-.skill-tag{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--accent);color:var(--accent);background:var(--accent-light)}
-/* publications */
-.pub-item{display:grid;grid-template-columns:2rem 1fr;gap:0.5rem;margin-bottom:1rem;font-size:1.1rem;font-weight:300;line-height:1.8}
+.skill-tag{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--accent);color:var(--accent);background:var(--accent-light)}
+
+/* ── PUBLICATIONS ── */
+.pub-item{display:grid;grid-template-columns:2.2rem 1fr;gap:0.5rem;margin-bottom:1.1rem;font-size:1.08rem;font-weight:300;line-height:1.8}
 .pub-num{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);padding-top:0.3em}
 .pub-text em{font-style:italic}
 .pub-text strong{font-weight:600}
 .pub-text a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-light)}
 .pub-text a:hover{border-bottom-color:var(--accent)}
-/* awards */
-.award-item{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:0.55rem 0;border-bottom:1px solid var(--line);font-size:1.1rem;font-weight:300}
-.award-year{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;color:var(--accent);white-space:nowrap}
-/* presentations */
-.upcoming-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.6rem;background:var(--accent);color:var(--pale);margin-left:0.6rem;vertical-align:middle}
-.pres-item{margin-bottom:1.4rem;padding-left:1rem;border-left:2px solid var(--line)}
+.inpress{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:#2a5c3f;border:1px solid #2a5c3f;padding:0.1rem 0.4rem;margin-left:0.4rem;vertical-align:middle}
+
+/* ── AWARDS ── */
+.award-item{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:0.6rem 0;border-bottom:1px solid var(--line);font-size:1.08rem;font-weight:300}
+.award-year{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;color:var(--accent);white-space:nowrap}
+
+/* ── PRESENTATIONS ── */
+.upcoming-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.6rem;background:var(--accent);color:var(--pale);margin-left:0.6rem;vertical-align:middle}
+.pres-item{margin-bottom:1.5rem;padding-left:1rem;border-left:2px solid var(--line)}
 .pres-item.upcoming{border-left-color:var(--accent);background:var(--accent-light);padding:0.8rem 1rem;border-radius:0 4px 4px 0}
-.pres-title{font-size:1.15rem;font-weight:400;line-height:1.5;margin-bottom:0.2rem}
+.pres-title{font-size:1.08rem;font-weight:400;line-height:1.5;margin-bottom:0.2rem}
 .pres-meta{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.15rem}
-.pres-type{display:inline-block;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.15rem 0.5rem;border:1px solid var(--muted);color:var(--muted);margin-right:0.4rem}
+.pres-type{display:inline-block;font-family:'DM Mono',monospace;font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.15rem 0.5rem;border:1px solid var(--muted);color:var(--muted);margin-right:0.4rem;margin-top:0.3rem}
 .pres-type.oral{border-color:var(--accent);color:var(--accent)}
 .pres-type.poster{border-color:var(--muted);color:var(--muted)}
 .pres-type.invited{border-color:#2a5c3f;color:#2a5c3f}
-/* service */
+
+/* ── SERVICE ── */
 .service-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 2rem}
 .service-item{font-size:1.05rem;font-weight:300;line-height:1.6;padding:0.3rem 0;border-bottom:1px solid var(--line)}
-.service-item span{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--accent);display:block;margin-bottom:0.1rem}
-/* about */
-.about-text p{font-size:1.05rem;font-weight:300;line-height:1.9;margin-bottom:1.2rem}
+.service-item span{font-family:'DM Mono',monospace;font-size:0.66rem;color:var(--accent);display:block;margin-bottom:0.1rem}
+
+/* ── ABOUT ── */
+.about-text p{font-size:1.08rem;font-weight:300;line-height:1.9;margin-bottom:1.2rem}
 .interest-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-top:0.5rem}
-.interest-list li{font-size:1.1rem;font-weight:300;padding:0.6rem 1rem;border-left:2px solid var(--accent);background:var(--accent-light)}
-/* cv tab */
-.download-btn{display:inline-block;margin-bottom:1.5rem;padding:0.65rem 1.4rem;border:1px solid var(--accent);color:var(--accent);font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s}
+.interest-list li{font-size:1.08rem;font-weight:300;padding:0.6rem 1rem;border-left:2px solid var(--accent);background:var(--accent-light)}
+
+/* ── CV TAB ── */
+.download-btn{display:inline-block;margin-bottom:1.5rem;padding:0.65rem 1.4rem;border:1px solid var(--accent);color:var(--accent);font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s}
 .download-btn:hover{background:var(--accent);color:var(--pale)}
-footer{border-top:1px solid var(--line);padding:1.2rem 4rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
-footer p{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;color:var(--muted)}
-@media(max-width:720px){
-  header{padding:2rem 1.5rem 1.5rem}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--line);padding:1.2rem 3rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
+footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em;color:var(--muted)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  header{padding:1.5rem}
   .header-left{flex-direction:column;align-items:flex-start;gap:1rem}
-  .header-photo{width:70px;height:70px}
+  .header-photo{width:65px;height:65px}
+  .header-right{align-items:flex-start}
   .header-links{align-items:flex-start}
-  .tab-bar{padding:0 0.5rem}
-  .tab-btn{padding:0.75rem 0.6rem;font-size:0.62rem}
-  .tab-panel{padding:2rem 1.5rem 3rem}
+  .layout{padding:2rem 1.5rem 3rem}
   .service-grid{grid-template-columns:1fr}
   footer{padding:1rem 1.5rem}
 }
@@ -101,526 +129,472 @@ footer p{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;
       <p>PhD Candidate &nbsp;&middot;&nbsp; Pharmaceutical Sciences, UBC &nbsp;&middot;&nbsp; Vancouver, BC</p>
     </div>
   </div>
-  <nav class="header-links">
-    <a href="javascript:void(0)" onclick="window.location='mai'+'lto:'+'jeenatm'+'@'+'student.ubc.ca'">jeenatm [at] student.ubc.ca</a>
-    <a href="https://www.linkedin.com/in/jeenat" target="_blank">LinkedIn &#8599;</a>
-    <a href="https://scholar.google.com/citations?user=DH1aoBIAAAAJ" target="_blank">Google Scholar &#8599;</a>
-  </nav>
+  <div class="header-right">
+    <nav class="header-links">
+      <a href="javascript:void(0)" onclick="window.location='mai'+'lto:'+'jeenatm'+'@'+'student.ubc.ca'">jeenatm [at] student.ubc.ca</a>
+      <a href="https://www.linkedin.com/in/jeenat" target="_blank">LinkedIn &#8599;</a>
+      <a href="https://scholar.google.com/citations?user=DH1aoBIAAAAJ" target="_blank">Google Scholar &#8599;</a>
+    </nav>
+    <div class="nav-wrapper">
+      <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu &#9662;</button>
+      <div class="nav-dropdown" id="navDropdown">
+        <button class="nav-item active" onclick="showTab('about',this)">About</button>
+        <button class="nav-item" onclick="showTab('education',this)">Education</button>
+        <button class="nav-item" onclick="showTab('experience',this)">Experience</button>
+        <button class="nav-item" onclick="showTab('publications',this)">Publications</button>
+        <button class="nav-item" onclick="showTab('presentations',this)">Presentations</button>
+        <button class="nav-item" onclick="showTab('awards',this)">Awards</button>
+        <button class="nav-item" onclick="showTab('teaching',this)">Teaching</button>
+        <button class="nav-item" onclick="showTab('service',this)">Service &amp; Leadership</button>
+        <button class="nav-item" onclick="showTab('cv',this)">Full CV</button>
+      </div>
+    </div>
+  </div>
 </header>
 
-<nav class="tab-bar">
-  <button class="tab-btn active" onclick="showTab('about',this)">About</button>
-  <button class="tab-btn" onclick="showTab('education',this)">Education</button>
-  <button class="tab-btn" onclick="showTab('experience',this)">Experience</button>
-  <button class="tab-btn" onclick="showTab('publications',this)">Publications</button>
-  <button class="tab-btn" onclick="showTab('presentations',this)">Presentations</button>
-  <button class="tab-btn" onclick="showTab('awards',this)">Awards</button>
-  <button class="tab-btn" onclick="showTab('teaching',this)">Teaching</button>
-  <button class="tab-btn" onclick="showTab('service',this)">Service &amp; Leadership</button>
-  <button class="tab-btn" onclick="showTab('cv',this)">Full CV</button>
-</nav>
+<div class="layout">
 
-<!-- ABOUT -->
-<div id="tab-about" class="tab-panel active">
-  <div class="cv-section">
-    <h2>About Me</h2>
-    <div class="about-text">
-      <blockquote style="border-left:3px solid var(--accent);padding-left:1.2rem;margin-bottom:1.4rem;font-size:1.05rem;font-weight:300;line-height:1.9;font-style:italic;color:var(--ink);">My journey into health research is rooted in personal experience. Growing up with asthma in Bangladesh, I witnessed the challenges of managing a chronic illness within an under-resourced healthcare system. These early experiences shaped my commitment to improving health outcomes.</blockquote>
-      <p>Always curious to learn more and open to meaningful conversations and collaborations. Please do not hesitate to connect!</p>
-    </div>
-  </div>
-  <div class="cv-section">
-    <h2>Research Interests</h2>
-    <ul class="interest-list">
-      <li>Health economics &amp; outcomes research</li>
-      <li>Clinical prediction modelling</li>
-      <li>Population-based administrative data analysis</li>
-      <li>Knowledge translation</li>
-    </ul>
-  </div>
-</div>
-
-<!-- EDUCATION -->
-<div id="tab-education" class="tab-panel">
-  <div class="cv-section">
-    <h2>Education</h2>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">PhD Candidate, Pharmaceutical Sciences</span><span class="entry-date">2023 &ndash; Present</span></div>
-      <div class="entry-org">University of British Columbia, Vancouver</div>
-      <div class="entry-body">Respiratory Evaluation Sciences Program &middot; Supervisor: Dr. Mohsen Sadatsafavi</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Master of Arts, Economics</span><span class="entry-date">2021 &ndash; 2023</span></div>
-      <div class="entry-org">Simon Fraser University</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Master of Social Science, Economics</span><span class="entry-date">2015</span></div>
-      <div class="entry-org">University of Dhaka</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Bachelor of Social Science, Economics</span><span class="entry-date">2011 &ndash; 2014</span></div>
-      <div class="entry-org">University of Dhaka</div>
-    </div>
-  </div>
-</div>
-
-<!-- EXPERIENCE -->
-<div id="tab-experience" class="tab-panel">
-  <div class="cv-section">
-    <h2>Research &amp; Administrative Experience</h2>
-
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Graduate Research Assistant</span><span class="entry-date">2023 &ndash; Present</span></div>
-      <div class="entry-org">Faculty of Pharmaceutical Sciences, UBC</div>
-      <div class="entry-body">Developing and updating COPD exacerbation prediction models using large-scale UK clinical data (CPRD), and generating population-level evidence on respiratory disease burden using administrative datasets. Managing end-to-end research operations for a CIHR-funded RCT, including IRB coordination, patient recruitment, grant writing, and multi-site collaboration.</div>
-      <div class="skill-tags"><span class="skill-tag">Prediction modelling</span><span class="skill-tag">Administrative data</span><span class="skill-tag">RCT management</span><span class="skill-tag">Grant writing</span><span class="skill-tag">Knowledge translation</span></div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Survey Coordinator</span><span class="entry-date">2024 &ndash; 2026</span></div>
-      <div class="entry-org">Graduate Student Society (GSS), UBC</div>
-      <div class="entry-body">Designed, administered, and analyzed the annual GSS Student Satisfaction Survey across ~10% of UBC&rsquo;s graduate student population, translating findings into structured advocacy initiatives on supervision, housing, and student welfare. Managed stakeholder engagement across university committees and maintained accountability frameworks for policy recommendations.</div>
-      <div class="skill-tags"><span class="skill-tag">Survey design</span><span class="skill-tag">Data analysis</span><span class="skill-tag">Stakeholder engagement</span><span class="skill-tag">Policy advocacy</span></div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Data Analyst</span><span class="entry-date">2022 &ndash; 2023</span></div>
-      <div class="entry-org">BC Cancer Research Centre</div>
-      <div class="entry-body">Conducted population-based administrative data linkage for a longitudinal study within the Childhood, Adolescent, and Young Adult Cancer Survivors (CAYACS) Program, supported statistical analyses, and contributed to grant and manuscript preparation under the mentorship of Dr. Stuart Peacock.</div>
-      <div class="skill-tags"><span class="skill-tag">Data linkage</span><span class="skill-tag">Longitudinal analysis</span><span class="skill-tag">Cancer epidemiology</span><span class="skill-tag">Manuscript writing</span></div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Research Assistant</span><span class="entry-date">2023</span></div>
-      <div class="entry-org">Department of Economics, Simon Fraser University</div>
-      <div class="entry-body">Conducted a systematic review and analyzed digitized datasets examining COVID-19&rsquo;s impact on women&rsquo;s economic and health outcomes in developing countries, contributing to policy-oriented reports.</div>
-      <div class="skill-tags"><span class="skill-tag">Systematic review</span><span class="skill-tag">Gender &amp; health</span><span class="skill-tag">Global health policy</span></div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Junior Exam Assistant</span><span class="entry-date">2022 &ndash; 2023</span></div>
-      <div class="entry-org">Centre for Accessible Learning (CAL), Simon Fraser University</div>
-      <div class="entry-body">Administered accommodated examinations with sensitivity to students&rsquo; physical and psychological disabilities, maintaining secure and equitable exam delivery protocols.</div>
-      <div class="skill-tags"><span class="skill-tag">Accessibility</span><span class="skill-tag">Student support</span></div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Senior Research Assistant</span><span class="entry-date">2016</span></div>
-      <div class="entry-org">BRAC James P Grant School of Public Health, BRAC University</div>
-      <div class="entry-body">Led survey instrument design, trained field data collectors, and developed data collection strategies for public health research in Bangladesh, contributing to manuscript and report writing.</div>
-      <div class="skill-tags"><span class="skill-tag">Survey methods</span><span class="skill-tag">Field research</span><span class="skill-tag">Public health</span></div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Co-researcher</span><span class="entry-date">2015</span></div>
-      <div class="entry-org">Bureau of Economic Research, University of Dhaka</div>
-      <div class="entry-body">Contributed to study design, primary data collection, literature synthesis, and preparation of research reports on economic topics in Bangladesh.</div>
-      <div class="skill-tags"><span class="skill-tag">Economic research</span><span class="skill-tag">Study design</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- PUBLICATIONS -->
-<div id="tab-publications" class="tab-panel">
-  <div class="cv-section">
-    <h2>Peer-Reviewed Publications</h2>
-    <div class="pub-item"><span class="pub-num">1.</span><span class="pub-text"><strong>Mehareen, J.</strong>, &amp; Sadatsafavi, M. (2026). Exacerbations in COPD: Early patterns say much about what is to come. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:3fE2CSJIrl8C" target="_blank"><em>Canadian Journal of Respiratory, Critical Care, and Sleep Medicine</em></a>, 1&ndash;2.</span></div>
-    <div class="pub-item"><span class="pub-num">2.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Choy, K., Yin, Y., Sin, D. D., &amp; Sadatsafavi, M. (2025). Temporal trends and regional variations in the burden of COPD. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:8k81kl-MbHgC" target="_blank"><em>Canadian Journal of Respiratory, Critical Care, and Sleep Medicine</em></a>.</span></div>
-    <div class="pub-item"><span class="pub-num">3.</span><span class="pub-text">Yin, Y., <strong>Mehareen, J.</strong>, Sadatsafavi, M., et al. (2026). Factors associated with guideline-concordant maintenance inhaled medication for COPD. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:ufrVoPGSRksC" target="_blank"><em>Thorax</em></a>, 81(3), 246&ndash;256.</span></div>
-    <div class="pub-item"><span class="pub-num">4.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Yin, Y., Choy, K., et al. (2025). Trends and regional differences in the use of maintenance inhaled medications in COPD. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:LkGwnXOMwfcC" target="_blank"><em>Journal of General Internal Medicine</em></a>, 1&ndash;4.</span></div>
-    <div class="pub-item"><span class="pub-num">5.</span><span class="pub-text">Amegadzie, J. E., <strong>Mehareen, J.</strong>, Khakban, A., Joshi, P., Carlsten, C., &amp; Sadatsafavi, M. (2025). Twenty-year trends in excess costs of COPD. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:Y0pCki6q_DkC" target="_blank"><em>European Respiratory Journal</em></a>, 65(1).</span></div>
-    <div class="pub-item"><span class="pub-num">6.</span><span class="pub-text">Nowrin, I., <strong>Mehareen, J.</strong>, Bhattacharyya, D. S., &amp; Rahman, K. S. U. (2023). Community-based interventions to prevent stroke in LMICs: A systematic review. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:UeHWp8X0CEIC" target="_blank"><em>Health Sciences Review</em></a>, 9.</span></div>
-    <div class="pub-item"><span class="pub-num">7.</span><span class="pub-text">Rahman, M. A., Dhira, T. A., Sarker, A. R., <strong>Mehareen, J.</strong> (2022). Validity and reliability of the PHQ-9 among university students of Bangladesh. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:2osOgNQ5qMEC" target="_blank"><em>PLOS ONE</em></a>, 17(6).</span></div>
-    <div class="pub-item"><span class="pub-num">8.</span><span class="pub-text">Rabbani, A., <strong>Mehareen, J.</strong>, Chowdhury, I. A., &amp; Sarker, M. (2022). Mandatory employer-sponsored health financing scheme for semiformal workers in Bangladesh. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:d1gkVwhDpl0C" target="_blank"><em>Social Science &amp; Medicine</em></a>, 292.</span></div>
-    <div class="pub-item"><span class="pub-num">9.</span><span class="pub-text">Khatoon, R., et al. (2022). Aggregation, asymmetry, and common factors for Bangladesh's exchange rate&ndash;trade balance relation. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:u-x6o8ySG0sC" target="_blank"><em>Empirical Economics</em></a>, 62(6), 2739&ndash;2770.</span></div>
-    <div class="pub-item"><span class="pub-num">10.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Rahman, M. A., Dhira, T. A., &amp; Sarker, A. R. (2021). Prevalence and socio-demographic correlates of depression, anxiety, and co-morbidity during COVID-19. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:u5HHmVD_uO8C" target="_blank"><em>Journal of Affective Disorders Reports</em></a>.</span></div>
-    <div class="pub-item"><span class="pub-num">11.</span><span class="pub-text">Dhira, T. A., Rahman, M. A., Sarker, A. R., <strong>Mehareen, J.</strong> (2021). Validity and reliability of the GAD-7 among university students of Bangladesh. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:9yKSN-GCB0IC" target="_blank"><em>PLOS ONE</em></a>, 16(12).</span></div>
-  </div>
-  <div class="cv-section">
-    <h2>Conference Publications</h2>
-    <div class="pub-item"><span class="pub-num">1.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Yin, Y., Choy, K., Johnson, K. M., Sin, D. D., &amp; Sadatsafavi, M. Regional variations and trends in the use of maintenance inhaled medications in COPD. <em>European Respiratory Society</em>; 2025. p. PA1416.</span></div>
-    <div class="pub-item"><span class="pub-num">2.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Zhu, S., Sadatsafavi, M., &amp; Frank, E. Optimizing Communication Strategies for COPD Management. <a href="https://www.ispor.org/heor-resources/presentations-database/presentation-cti/ispor-2025/poster-session-2/optimizing-communication-strategies-for-copd-management-effectiveness-of-educational-video-and-pamphlet-interventions" target="_blank"><em>Value in Health</em></a>. 2025;28(6):S323.</span></div>
-    <div class="pub-item"><span class="pub-num">3.</span><span class="pub-text">Amegadzie, J. E., <strong>Mehareen, J.</strong>, &amp; Sadatsafavi, M. The financial burden of prescription medications in COPD. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:WF5omc3nYNoC" target="_blank"><em>American Journal of Respiratory and Critical Care Medicine</em></a>. 2025;211:A4045.</span></div>
-    <div class="pub-item"><span class="pub-num">4.</span><span class="pub-text">Amegadzie, J. E., Khakban, A., <strong>Mehareen, J.</strong>, &amp; Sadatsafavi, M. Twenty-year trends in excess costs of COPD. <em>European Respiratory Journal</em>. 2024;64(Suppl 68):PA1294.</span></div>
-    <div class="pub-item"><span class="pub-num">5.</span><span class="pub-text">Yin, Y., <strong>Mehareen, J.</strong>, Sadatsafavi, M., et al. Factors associated with guideline-concordant maintenance inhaled medication for COPD.</span></div>
-  </div>
-  <div class="cv-section">
-    <h2>Rapid Response &amp; Pre-print</h2>
-    <div class="pub-item"><span class="pub-num">RR</span><span class="pub-text"><strong>Mehareen, J.</strong>; Sadatsafavi, M. Rapid response to Jordan RE et al. (2026). <a href="https://www.bmj.com/content/392/bmj-2025-084521/rr-0" target="_blank"><em>BMJ</em></a>, 392:e084521.</span></div>
-    <div class="pub-item"><span class="pub-num">PP</span><span class="pub-text"><strong>Mehareen, J.</strong>, Zhu, S., Sadatsafavi, M., &amp; Frank, E. Optimizing Communication Strategies for COPD Management. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:Se3iqnhoufwC" target="_blank"><em>medRxiv</em></a>, 2025.</span></div>
-  </div>
-</div>
-
-<!-- PRESENTATIONS -->
-<div id="tab-presentations" class="tab-panel">
-  <div class="cv-section">
-    <h2>Upcoming</h2>
-    <p style="font-size:1rem;font-weight:300;color:var(--muted);font-style:italic;">No upcoming presentations at this time.</p>
-  </div>
-
-  <div class="cv-section">
-    <h2>Past Presentations</h2>
-
-    <div class="pres-item">
-      <div class="pres-title">20-year trends in excess costs of asthma</div>
-      <div class="pres-meta">Apr 2026 &middot; CTS Research Forum &amp; Canadian Respiratory Conference, Calgary, Canada</div>
-      <span class="pres-type oral">Oral, Invited</span><span class="pres-type poster">Poster</span>
-    </div>
-
-    <div class="pres-item">
-      <div class="pres-title">Patient Engagement in Health Forecasting Research</div>
-      <div class="pres-meta">Jan 2026 &middot; Towards Deeper Patient Engagement Workshop, Centre for Lung Health, Vancouver Coastal Health Research Institute</div>
-      <span class="pres-type invited">Oral, Invited</span>
-    </div>
-
-    <div class="pres-item">
-      <div class="pres-title">Trends and Regional Differences in the Use of Maintenance Inhaled Medications in COPD</div>
-      <div class="pres-meta">Sep 2025 &middot; European Respiratory Congress, Amsterdam, Netherlands</div>
-      <span class="pres-type poster">Poster</span>
-    </div>
-
-    <div class="pres-item">
-      <div class="pres-title">The Financial Burden of Prescribed Medications in COPD</div>
-      <div class="pres-meta">Jun 2025 &middot; Health Economics Methodology Meeting, UBC, Vancouver</div>
-      <span class="pres-type poster">Poster</span>
-    </div>
-
-    <div class="pres-item">
-      <div class="pres-title">Optimizing Communication Strategies for COPD Management</div>
-      <div class="pres-meta">May 2025 &middot; ISPOR 2025, Montreal, Canada</div>
-      <span class="pres-type poster">Poster</span>
-    </div>
-
-    <div class="pres-item">
-      <div class="pres-title">Designing Holistic Wellness Retreats for Graduate Students: Insights from a Campus-wide Survey</div>
-      <div class="pres-meta">Feb 2025 &middot; Healthy Minds | Healthy Campuses Summit (Online)</div>
-      <span class="pres-type oral">Oral</span>
-    </div>
-
-    <div class="pres-item">
-      <div class="pres-title">Regional Variations in Burden and Patterns of Care for COPD in British Columbia</div>
-      <div class="pres-meta">2024&ndash;2025 &middot; Canadian Respiratory Conference, Quebec; Better Breathing Week, Toronto; Centre for Lung Health, Vancouver; Canadian Respiratory Research Network Annual Meeting, Ottawa</div>
-      <span class="pres-type oral">Oral, Invited</span><span class="pres-type oral">Rapid Fire</span>
-    </div>
-
-    <div class="pres-item">
-      <div class="pres-title">50-year Cancer Incidence and Mortality Trends in Adolescents and Young Adults in BC</div>
-      <div class="pres-meta">2024 &middot; Canadian Cancer Survivorship Research Consortium (Webinar); BC Cancer Summit, Vancouver</div>
-      <span class="pres-type invited">Invited Webinar</span><span class="pres-type poster">Poster</span>
-    </div>
-
-    <div class="pres-item">
-      <div class="pres-title">Twenty-year Trends in Excess Costs of COPD</div>
-      <div class="pres-meta">2024 &middot; CORE Team Meeting, UBC</div>
-      <span class="pres-type oral">Oral, Co-presenter</span>
-    </div>
-
-    <div class="pres-item">
-      <div class="pres-title">Budget Impact Analysis of Pneumococcal Conjugate Vaccines in US Adults</div>
-      <div class="pres-meta">2023 &middot; Health Economics Methodology Meeting, Vancouver</div>
-      <span class="pres-type invited">Invited Discussant</span>
-    </div>
-
-    <div class="pres-item">
-      <div class="pres-title">Overview of the Childhood, Adolescent, and Young Adult Cancer Survivors Program</div>
-      <div class="pres-meta">2023 &middot; Cancer Control Research Seminar, Vancouver</div>
-      <span class="pres-type oral">Oral</span>
-    </div>
-
-    <div class="pres-item">
-      <div class="pres-title">The Influence of University Image in Alumni Expectations and Satisfaction</div>
-      <div class="pres-meta">2021 &middot; International Symposium on Student Satisfaction and Quality of Higher Education, East West University, Bangladesh</div>
-      <span class="pres-type oral">Oral</span>
-    </div>
-  </div>
-</div>
-
-<!-- AWARDS -->
-<div id="tab-awards" class="tab-panel">
-  <div class="cv-section">
-    <h2>Awards &amp; Scholarships</h2>
-    <div class="award-item"><span>Canada Graduate Research Scholarship-Doctoral Program (CIHR CGRS-D)<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$120,000 over 3 years</span></span><span class="award-year">2026&ndash;2029</span></div>
-    <div class="award-item"><span>Four Year Doctoral Fellowship (4YF), UBC</span><span class="award-year">2026&ndash;2029</span></div>
-    <div class="award-item"><span>Go Global Self-Directed Research Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$1,000</span></span><span class="award-year">2026</span></div>
-    <div class="award-item"><span>Graduate Teaching Assistant Excellence Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$100</span></span><span class="award-year">2026</span></div>
-    <div class="award-item"><span>"Most Dedicated Work-Learn" Award, GSS, UBC</span><span class="award-year">2026</span></div>
-    <div class="award-item"><span>MITACS Globalink Research Award Abroad<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$6,000</span></span><span class="award-year">2026</span></div>
-    <div class="award-item"><span>UBC KxM Research to Impact Award<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$500</span></span><span class="award-year">2025</span></div>
-    <div class="award-item"><span>Graduate Student Professional Development Award, Pharmaceutical Sciences, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$500</span></span><span class="award-year">2025</span></div>
-    <div class="award-item"><span>Pharmaceutical Sciences Graduate Student Service Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$200</span></span><span class="award-year">2024&ndash;2026</span></div>
-    <div class="award-item"><span>Graduate Student Travel Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$500</span></span><span class="award-year">2025</span></div>
-    <div class="award-item"><span>Douglas and Jean Bailey Scholarship, Faculty of Pharmaceutical Sciences, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$2,214</span></span><span class="award-year">2025</span></div>
-    <div class="award-item"><span>Better Breathing Week Student Travel Award, Lung Health Foundation<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$1,100</span></span><span class="award-year">2025</span></div>
-    <div class="award-item"><span>Studentship Award, Canadian Lung Association<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$10,500</span></span><span class="award-year">2024&ndash;2025</span></div>
-    <div class="award-item"><span>Trainee Salary Stipend Award, BC Respiratory Health Network<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$5,000</span></span><span class="award-year">2024</span></div>
-    <div class="award-item"><span>Symposium Travel Award, Canada&rsquo;s Drug Agency<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$3,100</span></span><span class="award-year">2024</span></div>
-    <div class="award-item"><span>Faculty of Pharmaceutical Sciences Graduate Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$5,660</span></span><span class="award-year">2023&ndash;2025</span></div>
-    <div class="award-item"><span>President&rsquo;s Academic Excellence Initiative PhD Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$3,735</span></span><span class="award-year">2023&ndash;2026</span></div>
-    <div class="award-item"><span>Bangladesh Sweden Trust Fund, Ministry of Finance, Bangladesh<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">Airfare support</span></span><span class="award-year">2022</span></div>
-    <div class="award-item"><span>Canada Graduate Scholarships &ndash; Master&rsquo;s (SSHRC CGS-M)<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$17,500</span></span><span class="award-year">2022&ndash;2023</span></div>
-    <div class="award-item"><span>Special Graduate Entrance Award, Simon Fraser University<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$2,000</span></span><span class="award-year">2021</span></div>
-    <div class="award-item"><span>GPS Graduate Fellowship, Simon Fraser University<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$3,000</span></span><span class="award-year">2021</span></div>
-  </div>
-  <div class="cv-section">
-    <h2>Competition</h2>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Third Place, National Medical Datathon 2026</span><span class="entry-date">2026</span></div>
-      <div class="entry-body">Project: (Un)Fairness Metrics in Medical Models: 30-day Hospital Readmission of Patients with Diabetes. Team: Bronwyn Moore, Crystal Leung, Jeenat Mehareen, Ramin Rezaeianzadeh.</div>
-    </div>
-  </div>
-  <div class="cv-section">
-    <h2>Research Funding</h2>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Co-Investigator, Bangladesh Medical Research Council (BMRC) Grant</span><span class="entry-date">2021</span></div>
-      <div class="entry-body">Uncovering the Willingness to Pay for Treating and Avoiding Mental Illness. Total funding: BDT 500,000 &middot; Jul&ndash;Dec 2021.</div>
-    </div>
-  </div>
-</div>
-
-<!-- TEACHING -->
-<div id="tab-teaching" class="tab-panel">
-  <div class="cv-section">
-    <h2>Teaching Experience</h2>
-
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Teaching Practicum</span><span class="entry-date">2026</span></div>
-      <div class="entry-org">Centre for the Integration of Research, Teaching, and Learning, UBC</div>
-      <div class="entry-body">
-        <ul>
-          <li><strong>PHAR 305:</strong> Clinical Epidemiology and Pharmaceutical Outcomes II · delivered two guest lectures including an R-workshop</li>
+    <!-- ABOUT -->
+    <div id="tab-about" class="tab-panel active">
+      <div class="cv-section">
+        <h2>About Me</h2>
+        <div class="about-text">
+          <blockquote style="border-left:3px solid var(--accent);padding-left:1.2rem;margin-bottom:1.4rem;font-size:1.08rem;font-weight:300;line-height:1.9;font-style:italic;color:var(--ink);">My journey into health research is rooted in personal experience. Growing up with asthma in Bangladesh, I witnessed the challenges of managing a chronic illness within an under-resourced healthcare system. These early experiences shaped my commitment to improving health outcomes.</blockquote>
+          <p>Always curious to learn more and open to meaningful conversations and collaborations. Please do not hesitate to connect!</p>
+        </div>
+      </div>
+      <div class="cv-section">
+        <h2>Research Interests</h2>
+        <ul class="interest-list">
+          <li>Health economics &amp; outcomes research</li>
+          <li>Clinical prediction modelling</li>
+          <li>Population-based administrative data analysis</li>
+          <li>Knowledge translation</li>
         </ul>
-        <div style="margin-top:0.4rem;font-size:0.88rem;color:var(--muted);">Achieved CIRTL associate status.</div>
       </div>
     </div>
 
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Graduate Teaching Assistant</span><span class="entry-date">2025 &ndash; 2026</span></div>
-      <div class="entry-org">Sauder School of Business, UBC</div>
-      <div class="entry-body"><ul>
-        <li><strong>BABS 502:</strong> Forecasting and Time Series Prediction</li>
-        <li><strong>BABS 550:</strong> Applications of Statistics in Management</li>
-        <li><strong>BUSI 291 / COMM 191:</strong> Applications of Statistics in Business</li>
-      </ul></div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Graduate Teaching Assistant</span><span class="entry-date">2023 &ndash; 2026</span></div>
-      <div class="entry-org">Faculty of Pharmaceutical Sciences, UBC</div>
-      <div class="entry-body">
-        <ul>
-          <li><strong>PHAR 205:</strong> Clinical Epidemiology and Pharmaceutical Outcomes</li>
-          <li><strong>PHAR 211:</strong> Medication Management</li>
-          <li><strong>PHAR 305:</strong> Clinical Epidemiology and Pharmaceutical Outcomes II</li>
-        </ul>
-        <div style="margin-top:0.4rem;font-size:0.88rem;color:var(--muted);">Led R workshops, held office hours, and graded critical appraisals and course projects.</div>
+    <!-- EDUCATION -->
+    <div id="tab-education" class="tab-panel">
+      <div class="cv-section">
+        <h2>Education</h2>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">PhD Candidate, Pharmaceutical Sciences</span><span class="entry-date">2023 &ndash; Present</span></div>
+          <div class="entry-org">University of British Columbia, Vancouver</div>
+          <div class="entry-body">Respiratory Evaluation Sciences Program &middot; Supervisor: Dr. Mohsen Sadatsafavi</div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Master of Arts, Economics</span><span class="entry-date">2021 &ndash; 2023</span></div>
+          <div class="entry-org">Simon Fraser University</div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Master of Social Science, Economics</span><span class="entry-date">2015</span></div>
+          <div class="entry-org">University of Dhaka</div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Bachelor of Social Science, Economics</span><span class="entry-date">2011 &ndash; 2014</span></div>
+          <div class="entry-org">University of Dhaka</div>
+        </div>
       </div>
     </div>
 
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Graduate Teaching Assistant</span><span class="entry-date">2021 &ndash; 2023</span></div>
-      <div class="entry-org">Department of Economics, Simon Fraser University</div>
-      <div class="entry-body"><ul>
-        <li><strong>ECON 103:</strong> Principles of Microeconomics</li>
-        <li><strong>ECON 105:</strong> Principles of Macroeconomics</li>
-        <li><strong>ECON 370:</strong> Health Economics</li>
-      </ul></div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Academics First Tutor</span><span class="entry-date">2023</span></div>
-      <div class="entry-org">Simon Fraser University</div>
-      <div class="entry-body">
-        <ul>
-          <li><strong>ECON 102:</strong> The World Economy</li>
-          <li><strong>ECON 113:</strong> Introduction to Microeconomics</li>
-          <li><strong>ECON 115:</strong> Introduction to Macroeconomics</li>
-          <li><strong>ECON 201:</strong> Microeconomic Theory I: Competitive Behavior</li>
-        </ul>
-        <div style="margin-top:0.4rem;font-size:0.88rem;color:var(--muted);">Tutored student-athletes, Indigenous students, WUSC students, and Uggla Family Scholars.</div>
+    <!-- EXPERIENCE -->
+    <div id="tab-experience" class="tab-panel">
+      <div class="cv-section">
+        <h2>Research &amp; Administrative Experience</h2>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Graduate Research Assistant</span><span class="entry-date">2023 &ndash; Present</span></div>
+          <div class="entry-org">Faculty of Pharmaceutical Sciences, UBC</div>
+          <div class="entry-body">Developing and updating COPD exacerbation prediction models using large-scale UK clinical data (CPRD), and generating population-level evidence on respiratory disease burden using administrative datasets. Managing end-to-end research operations for a CIHR-funded RCT, including IRB coordination, patient recruitment, grant writing, and multi-site collaboration.</div>
+          <div class="skill-tags"><span class="skill-tag">Prediction modelling</span><span class="skill-tag">Administrative data</span><span class="skill-tag">RCT management</span><span class="skill-tag">Grant writing</span><span class="skill-tag">Knowledge translation</span></div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Survey Coordinator</span><span class="entry-date">2024 &ndash; 2026</span></div>
+          <div class="entry-org">Graduate Student Society (GSS), UBC</div>
+          <div class="entry-body">Designed, administered, and analyzed the annual GSS Student Satisfaction Survey across ~10% of UBC&rsquo;s graduate student population, translating findings into structured advocacy initiatives on supervision, housing, and student welfare.</div>
+          <div class="skill-tags"><span class="skill-tag">Survey design</span><span class="skill-tag">Data analysis</span><span class="skill-tag">Stakeholder engagement</span><span class="skill-tag">Policy advocacy</span></div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Data Analyst</span><span class="entry-date">2022 &ndash; 2023</span></div>
+          <div class="entry-org">BC Cancer Research Centre</div>
+          <div class="entry-body">Conducted population-based administrative data linkage for a longitudinal study within the Childhood, Adolescent, and Young Adult Cancer Survivors (CAYACS) Program under the mentorship of Dr. Stuart Peacock.</div>
+          <div class="skill-tags"><span class="skill-tag">Data linkage</span><span class="skill-tag">Longitudinal analysis</span><span class="skill-tag">Cancer epidemiology</span><span class="skill-tag">Manuscript writing</span></div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Research Assistant</span><span class="entry-date">2023</span></div>
+          <div class="entry-org">Department of Economics, Simon Fraser University</div>
+          <div class="entry-body">Conducted a systematic review and analyzed datasets examining COVID-19&rsquo;s impact on women&rsquo;s economic and health outcomes in developing countries.</div>
+          <div class="skill-tags"><span class="skill-tag">Systematic review</span><span class="skill-tag">Gender &amp; health</span><span class="skill-tag">Global health policy</span></div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Junior Exam Assistant</span><span class="entry-date">2022 &ndash; 2023</span></div>
+          <div class="entry-org">Centre for Accessible Learning (CAL), Simon Fraser University</div>
+          <div class="entry-body">Administered accommodated examinations with sensitivity to students&rsquo; physical and psychological disabilities.</div>
+          <div class="skill-tags"><span class="skill-tag">Accessibility</span><span class="skill-tag">Student support</span></div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Senior Research Assistant</span><span class="entry-date">2016</span></div>
+          <div class="entry-org">BRAC James P Grant School of Public Health, BRAC University</div>
+          <div class="entry-body">Led survey instrument design, trained field data collectors, and contributed to manuscript and report writing.</div>
+          <div class="skill-tags"><span class="skill-tag">Survey methods</span><span class="skill-tag">Field research</span><span class="skill-tag">Public health</span></div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Co-researcher</span><span class="entry-date">2015</span></div>
+          <div class="entry-org">Bureau of Economic Research, University of Dhaka</div>
+          <div class="entry-body">Contributed to study design, primary data collection, literature synthesis, and preparation of research reports.</div>
+          <div class="skill-tags"><span class="skill-tag">Economic research</span><span class="skill-tag">Study design</span></div>
+        </div>
       </div>
     </div>
 
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Economics Tutor</span><span class="entry-date">2022 &ndash; 2023</span></div>
-      <div class="entry-org">Columbia College</div>
-      <div class="entry-body">One-on-one and small-group undergraduate tutoring in economics.</div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Senior Lecturer, Department of Economics</span><span class="entry-date">2016 &ndash; 2021</span></div>
-      <div class="entry-org">East West University, Bangladesh</div>
-      <div class="entry-body">
-        <ul>
-          <li><strong>ECON 101:</strong> Principles of Microeconomics</li>
-          <li><strong>ECON 102:</strong> Introduction to Macroeconomics</li>
-          <li><strong>MAT 100 / MAT 111 / MAT 211:</strong> Mathematics for Business and Economics</li>
-          <li><strong>BUS 101:</strong> Statistics for Business and Economics</li>
-          <li><strong>ECON 304:</strong> Economics of Health</li>
-        </ul>
-        <div style="margin-top:0.4rem;font-size:0.88rem;color:var(--muted);">Contributed to curriculum development and supervised undergraduate research projects.</div>
+    <!-- PUBLICATIONS -->
+    <div id="tab-publications" class="tab-panel">
+      <div class="cv-section">
+        <h2>Peer-Reviewed Publications</h2>
+        <div class="pub-item"><span class="pub-num">1.</span><span class="pub-text"><strong>Mehareen, J.</strong>, &amp; Sadatsafavi, M. (In press). Catch ME (mild exacerbations) if you can: Rethinking the role of exacerbation severity in COPD risk assessment. <em>CHEST</em>. <span class="inpress">In Press</span></span></div>
+        <div class="pub-item"><span class="pub-num">2.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Sadatsafavi, M., Joshi, P., Carlsten, C., &amp; Amegadzie, J. E. (In press). The financial burden of prescribed medications in chronic obstructive pulmonary disease. <em>CHEST Pulmonary</em>. <span class="inpress">In Press</span></span></div>
+        <div class="pub-item"><span class="pub-num">3.</span><span class="pub-text"><strong>Mehareen, J.</strong>, &amp; Sadatsafavi, M. (2026). Exacerbations in COPD: Early patterns say much about what is to come. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:3fE2CSJIrl8C" target="_blank"><em>Canadian Journal of Respiratory, Critical Care, and Sleep Medicine</em></a>, 1&ndash;2.</span></div>
+        <div class="pub-item"><span class="pub-num">4.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Choy, K., Yin, Y., Sin, D. D., &amp; Sadatsafavi, M. (2025). Temporal trends and regional variations in the burden of COPD. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:8k81kl-MbHgC" target="_blank"><em>Canadian Journal of Respiratory, Critical Care, and Sleep Medicine</em></a>.</span></div>
+        <div class="pub-item"><span class="pub-num">5.</span><span class="pub-text">Yin, Y., <strong>Mehareen, J.</strong>, Sadatsafavi, M., et al. (2026). Factors associated with guideline-concordant maintenance inhaled medication for COPD. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:ufrVoPGSRksC" target="_blank"><em>Thorax</em></a>, 81(3), 246&ndash;256.</span></div>
+        <div class="pub-item"><span class="pub-num">6.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Yin, Y., Choy, K., et al. (2025). Trends and regional differences in the use of maintenance inhaled medications in COPD. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:LkGwnXOMwfcC" target="_blank"><em>Journal of General Internal Medicine</em></a>, 1&ndash;4.</span></div>
+        <div class="pub-item"><span class="pub-num">7.</span><span class="pub-text">Amegadzie, J. E., <strong>Mehareen, J.</strong>, Khakban, A., Joshi, P., Carlsten, C., &amp; Sadatsafavi, M. (2025). Twenty-year trends in excess costs of COPD. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:Y0pCki6q_DkC" target="_blank"><em>European Respiratory Journal</em></a>, 65(1).</span></div>
+        <div class="pub-item"><span class="pub-num">8.</span><span class="pub-text">Nowrin, I., <strong>Mehareen, J.</strong>, Bhattacharyya, D. S., &amp; Rahman, K. S. U. (2023). Community-based interventions to prevent stroke in LMICs: A systematic review. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:UeHWp8X0CEIC" target="_blank"><em>Health Sciences Review</em></a>, 9.</span></div>
+        <div class="pub-item"><span class="pub-num">9.</span><span class="pub-text">Rahman, M. A., Dhira, T. A., Sarker, A. R., <strong>Mehareen, J.</strong> (2022). Validity and reliability of the PHQ-9 among university students of Bangladesh. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:2osOgNQ5qMEC" target="_blank"><em>PLOS ONE</em></a>, 17(6).</span></div>
+        <div class="pub-item"><span class="pub-num">10.</span><span class="pub-text">Rabbani, A., <strong>Mehareen, J.</strong>, Chowdhury, I. A., &amp; Sarker, M. (2022). Mandatory employer-sponsored health financing scheme for semiformal workers in Bangladesh. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:d1gkVwhDpl0C" target="_blank"><em>Social Science &amp; Medicine</em></a>, 292.</span></div>
+        <div class="pub-item"><span class="pub-num">11.</span><span class="pub-text">Khatoon, R., et al. (2022). Aggregation, asymmetry, and common factors for Bangladesh's exchange rate&ndash;trade balance relation. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:u-x6o8ySG0sC" target="_blank"><em>Empirical Economics</em></a>, 62(6), 2739&ndash;2770.</span></div>
+        <div class="pub-item"><span class="pub-num">12.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Rahman, M. A., Dhira, T. A., &amp; Sarker, A. R. (2021). Prevalence and socio-demographic correlates of depression, anxiety, and co-morbidity during COVID-19. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:u5HHmVD_uO8C" target="_blank"><em>Journal of Affective Disorders Reports</em></a>.</span></div>
+        <div class="pub-item"><span class="pub-num">13.</span><span class="pub-text">Dhira, T. A., Rahman, M. A., Sarker, A. R., <strong>Mehareen, J.</strong> (2021). Validity and reliability of the GAD-7 among university students of Bangladesh. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:9yKSN-GCB0IC" target="_blank"><em>PLOS ONE</em></a>, 16(12).</span></div>
+      </div>
+      <div class="cv-section">
+        <h2>Conference Publications</h2>
+        <div class="pub-item"><span class="pub-num">1.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Yin, Y., Choy, K., Johnson, K. M., Sin, D. D., &amp; Sadatsafavi, M. Regional variations and trends in the use of maintenance inhaled medications in COPD. <em>European Respiratory Society</em>; 2025. p. PA1416.</span></div>
+        <div class="pub-item"><span class="pub-num">2.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Zhu, S., Sadatsafavi, M., &amp; Frank, E. Optimizing Communication Strategies for COPD Management. <a href="https://www.ispor.org/heor-resources/presentations-database/presentation-cti/ispor-2025/poster-session-2/optimizing-communication-strategies-for-copd-management-effectiveness-of-educational-video-and-pamphlet-interventions" target="_blank"><em>Value in Health</em></a>. 2025;28(6):S323.</span></div>
+        <div class="pub-item"><span class="pub-num">3.</span><span class="pub-text">Amegadzie, J. E., <strong>Mehareen, J.</strong>, &amp; Sadatsafavi, M. The financial burden of prescription medications in COPD. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:WF5omc3nYNoC" target="_blank"><em>American Journal of Respiratory and Critical Care Medicine</em></a>. 2025;211:A4045.</span></div>
+        <div class="pub-item"><span class="pub-num">4.</span><span class="pub-text">Amegadzie, J. E., Khakban, A., <strong>Mehareen, J.</strong>, &amp; Sadatsafavi, M. Twenty-year trends in excess costs of COPD. <em>European Respiratory Journal</em>. 2024;64(Suppl 68):PA1294.</span></div>
+        <div class="pub-item"><span class="pub-num">5.</span><span class="pub-text">Yin, Y., <strong>Mehareen, J.</strong>, Sadatsafavi, M., et al. Factors associated with guideline-concordant maintenance inhaled medication for COPD.</span></div>
+      </div>
+      <div class="cv-section">
+        <h2>Rapid Response &amp; Pre-print</h2>
+        <div class="pub-item"><span class="pub-num">RR</span><span class="pub-text"><strong>Mehareen, J.</strong>; Sadatsafavi, M. Rapid response to Jordan RE et al. (2026). <a href="https://www.bmj.com/content/392/bmj-2025-084521/rr-0" target="_blank"><em>BMJ</em></a>, 392:e084521.</span></div>
+        <div class="pub-item"><span class="pub-num">PP</span><span class="pub-text"><strong>Mehareen, J.</strong>, Zhu, S., Sadatsafavi, M., &amp; Frank, E. Optimizing Communication Strategies for COPD Management. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:Se3iqnhoufwC" target="_blank"><em>medRxiv</em></a>, 2025.</span></div>
       </div>
     </div>
 
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Graduate Teaching Fellow</span><span class="entry-date">2016</span></div>
-      <div class="entry-org">BRAC James P Grant School of Public Health, BRAC University</div>
-      <div class="entry-body">
-        <ul>
-          <li><strong>Module:</strong> Health Economics and Health Care Financing Strategy</li>
-        </ul>
-        <div style="margin-top:0.4rem;font-size:0.88rem;color:var(--muted);">Prepared course materials and guided students in fieldwork.</div>
+    <!-- PRESENTATIONS -->
+    <div id="tab-presentations" class="tab-panel">
+      <div class="cv-section">
+        <h2>Upcoming</h2>
+        <div class="pres-item upcoming">
+          <div class="pres-title">20-year trends in excess costs of asthma <span class="upcoming-badge">Upcoming</span></div>
+          <div class="pres-meta">2026 &middot; Health Economics Methodology Meeting, Canada</div>
+          <span class="pres-type poster">Poster</span>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <h2>Past Presentations</h2>
+
+        <div class="pres-item">
+          <div class="pres-title">Health and Economic Burden of Chronic Obstructive Pulmonary Disease</div>
+          <div class="pres-meta">May 2026 &middot; Brown Bag Seminar Series, Department of Economics, East West University, Dhaka, Bangladesh</div>
+          <span class="pres-type invited">Oral, Invited</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-title">20-year trends in excess costs of asthma</div>
+          <div class="pres-meta">Apr 2026 &middot; CTS Research Forum &amp; Canadian Respiratory Conference, Calgary, Canada</div>
+          <span class="pres-type oral">Oral, Invited</span><span class="pres-type poster">Poster</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-title">Patient Engagement in Health Forecasting Research</div>
+          <div class="pres-meta">Jan 2026 &middot; Towards Deeper Patient Engagement Workshop, Centre for Lung Health, Vancouver Coastal Health Research Institute</div>
+          <span class="pres-type invited">Oral, Invited</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-title">Trends and Regional Differences in the Use of Maintenance Inhaled Medications in COPD</div>
+          <div class="pres-meta">Sep 2025 &middot; European Respiratory Congress, Amsterdam, Netherlands</div>
+          <span class="pres-type poster">Poster</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-title">The Financial Burden of Prescribed Medications in COPD</div>
+          <div class="pres-meta">Jun 2025 &middot; Health Economics Methodology Meeting, UBC, Vancouver</div>
+          <span class="pres-type poster">Poster</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-title">Optimizing Communication Strategies for COPD Management</div>
+          <div class="pres-meta">May 2025 &middot; ISPOR 2025, Montreal, Canada</div>
+          <span class="pres-type poster">Poster</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-title">Designing Holistic Wellness Retreats for Graduate Students: Insights from a Campus-wide Survey</div>
+          <div class="pres-meta">Feb 2025 &middot; Healthy Minds | Healthy Campuses Summit (Online)</div>
+          <span class="pres-type oral">Oral</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-title">Regional Variations in Burden and Patterns of Care for COPD in British Columbia</div>
+          <div class="pres-meta">2024&ndash;2025 &middot; Canadian Respiratory Conference, Quebec; Better Breathing Week, Toronto; Centre for Lung Health, Vancouver; Canadian Respiratory Research Network Annual Meeting, Ottawa</div>
+          <span class="pres-type invited">Oral, Invited</span><span class="pres-type oral">Rapid Fire</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-title">50-year Cancer Incidence and Mortality Trends in Adolescents and Young Adults in BC</div>
+          <div class="pres-meta">2024 &middot; Canadian Cancer Survivorship Research Consortium (Webinar); BC Cancer Summit, Vancouver</div>
+          <span class="pres-type invited">Invited Webinar</span><span class="pres-type poster">Poster</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-title">Twenty-year Trends in Excess Costs of COPD</div>
+          <div class="pres-meta">2024 &middot; CORE Team Meeting, UBC</div>
+          <span class="pres-type oral">Oral, Co-presenter</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-title">Budget Impact Analysis of Pneumococcal Conjugate Vaccines in US Adults</div>
+          <div class="pres-meta">2023 &middot; Health Economics Methodology Meeting, Vancouver</div>
+          <span class="pres-type invited">Invited Discussant</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-title">Overview of the Childhood, Adolescent, and Young Adult Cancer Survivors Program</div>
+          <div class="pres-meta">2023 &middot; Cancer Control Research Seminar, Vancouver</div>
+          <span class="pres-type oral">Oral</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-title">The Influence of University Image in Alumni Expectations and Satisfaction</div>
+          <div class="pres-meta">2021 &middot; International Symposium on Student Satisfaction and Quality of Higher Education, East West University, Bangladesh</div>
+          <span class="pres-type oral">Oral</span>
+        </div>
       </div>
     </div>
 
-  </div>
-</div>
+    <!-- AWARDS -->
+    <div id="tab-awards" class="tab-panel">
+      <div class="cv-section">
+        <h2>Awards &amp; Scholarships</h2>
+        <div class="award-item"><span>Canada Graduate Research Scholarship-Doctoral Program (CIHR CGRS-D)<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$120,000 over 3 years</span></span><span class="award-year">2026&ndash;2029</span></div>
+        <div class="award-item"><span>Four Year Doctoral Fellowship (4YF), UBC</span><span class="award-year">2026&ndash;2029</span></div>
+        <div class="award-item"><span>Graduate Teaching Assistant Excellence Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$100</span></span><span class="award-year">2026</span></div>
+        <div class="award-item"><span>Go Global Self-Directed Research Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$1,000</span></span><span class="award-year">2026</span></div>
+        <div class="award-item"><span>"Most Dedicated Work-Learn" Award, GSS, UBC</span><span class="award-year">2026</span></div>
+        <div class="award-item"><span>MITACS Globalink Research Award Abroad<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$6,000</span></span><span class="award-year">2026</span></div>
+        <div class="award-item"><span>UBC KxM Research to Impact Award<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$500</span></span><span class="award-year">2025</span></div>
+        <div class="award-item"><span>Graduate Student Professional Development Award, Pharmaceutical Sciences, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$500</span></span><span class="award-year">2025</span></div>
+        <div class="award-item"><span>Pharmaceutical Sciences Graduate Student Service Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$200</span></span><span class="award-year">2024&ndash;2026</span></div>
+        <div class="award-item"><span>Graduate Student Travel Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$500</span></span><span class="award-year">2025</span></div>
+        <div class="award-item"><span>Douglas and Jean Bailey Scholarship, Faculty of Pharmaceutical Sciences, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$2,214</span></span><span class="award-year">2025</span></div>
+        <div class="award-item"><span>Better Breathing Week Student Travel Award, Lung Health Foundation<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$1,100</span></span><span class="award-year">2025</span></div>
+        <div class="award-item"><span>Studentship Award, Canadian Lung Association<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$10,500</span></span><span class="award-year">2024&ndash;2025</span></div>
+        <div class="award-item"><span>Trainee Salary Stipend Award, BC Respiratory Health Network<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$5,000</span></span><span class="award-year">2024</span></div>
+        <div class="award-item"><span>Symposium Travel Award, Canada&rsquo;s Drug Agency<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$3,100</span></span><span class="award-year">2024</span></div>
+        <div class="award-item"><span>Faculty of Pharmaceutical Sciences Graduate Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$5,660</span></span><span class="award-year">2023&ndash;2025</span></div>
+        <div class="award-item"><span>President&rsquo;s Academic Excellence Initiative PhD Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$3,735</span></span><span class="award-year">2023&ndash;2026</span></div>
+        <div class="award-item"><span>Bangladesh Sweden Trust Fund, Ministry of Finance, Bangladesh<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">Airfare support</span></span><span class="award-year">2022</span></div>
+        <div class="award-item"><span>Canada Graduate Scholarships &ndash; Master&rsquo;s (SSHRC CGS-M)<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$17,500</span></span><span class="award-year">2022&ndash;2023</span></div>
+        <div class="award-item"><span>Special Graduate Entrance Award, Simon Fraser University<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$2,000</span></span><span class="award-year">2021</span></div>
+        <div class="award-item"><span>GPS Graduate Fellowship, Simon Fraser University<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$3,000</span></span><span class="award-year">2021</span></div>
+      </div>
+      <div class="cv-section">
+        <h2>Competition</h2>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Third Place, National Medical Datathon 2026</span><span class="entry-date">2026</span></div>
+          <div class="entry-body">Project: (Un)Fairness Metrics in Medical Models: 30-day Hospital Readmission of Patients with Diabetes. Team: Bronwyn Moore, Crystal Leung, Jeenat Mehareen, Ramin Rezaeianzadeh.</div>
+        </div>
+      </div>
+      <div class="cv-section">
+        <h2>Research Funding</h2>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Co-Investigator, Bangladesh Medical Research Council (BMRC) Grant</span><span class="entry-date">2021</span></div>
+          <div class="entry-body">Uncovering the Willingness to Pay for Treating and Avoiding Mental Illness. Total funding: BDT 500,000 &middot; Jul&ndash;Dec 2021.</div>
+        </div>
+      </div>
+    </div>
 
-<!-- SERVICE & LEADERSHIP -->
-<div id="tab-service" class="tab-panel">
+    <!-- TEACHING -->
+    <div id="tab-teaching" class="tab-panel">
+      <div class="cv-section">
+        <h2>Teaching Experience</h2>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Teaching Practicum</span><span class="entry-date">2026</span></div>
+          <div class="entry-org">Centre for the Integration of Research, Teaching, and Learning, UBC</div>
+          <div class="entry-body"><ul>
+            <li><strong>PHAR 305:</strong> Clinical Epidemiology and Pharmaceutical Outcomes II &middot; delivered two guest lectures including an R-workshop</li>
+          </ul>
+          <div style="margin-top:0.4rem;font-size:0.92rem;color:var(--muted);">Achieved CIRTL associate status.</div></div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Graduate Teaching Assistant</span><span class="entry-date">2025 &ndash; 2026</span></div>
+          <div class="entry-org">Sauder School of Business, UBC</div>
+          <div class="entry-body"><ul>
+            <li><strong>BABS 502:</strong> Forecasting and Time Series Prediction</li>
+            <li><strong>BABS 550:</strong> Applications of Statistics in Management</li>
+            <li><strong>BUSI 291 / COMM 191:</strong> Applications of Statistics in Business</li>
+          </ul></div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Graduate Teaching Assistant</span><span class="entry-date">2023 &ndash; 2026</span></div>
+          <div class="entry-org">Faculty of Pharmaceutical Sciences, UBC</div>
+          <div class="entry-body"><ul>
+            <li><strong>PHAR 205:</strong> Clinical Epidemiology and Pharmaceutical Outcomes</li>
+            <li><strong>PHAR 211:</strong> Medication Management</li>
+            <li><strong>PHAR 305:</strong> Clinical Epidemiology and Pharmaceutical Outcomes II</li>
+          </ul>
+          <div style="margin-top:0.4rem;font-size:0.92rem;color:var(--muted);">Led R workshops, held office hours, and graded critical appraisals and course projects.</div></div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Graduate Teaching Assistant</span><span class="entry-date">2021 &ndash; 2023</span></div>
+          <div class="entry-org">Department of Economics, Simon Fraser University</div>
+          <div class="entry-body"><ul>
+            <li><strong>ECON 103:</strong> Principles of Microeconomics</li>
+            <li><strong>ECON 105:</strong> Principles of Macroeconomics</li>
+            <li><strong>ECON 370:</strong> Health Economics</li>
+          </ul></div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Academics First Tutor</span><span class="entry-date">2023</span></div>
+          <div class="entry-org">Simon Fraser University</div>
+          <div class="entry-body"><ul>
+            <li><strong>ECON 102:</strong> The World Economy</li>
+            <li><strong>ECON 113:</strong> Introduction to Microeconomics</li>
+            <li><strong>ECON 115:</strong> Introduction to Macroeconomics</li>
+            <li><strong>ECON 201:</strong> Microeconomic Theory I: Competitive Behavior</li>
+          </ul>
+          <div style="margin-top:0.4rem;font-size:0.92rem;color:var(--muted);">Tutored student-athletes, Indigenous students, WUSC students, and Uggla Family Scholars.</div></div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Economics Tutor</span><span class="entry-date">2022 &ndash; 2023</span></div>
+          <div class="entry-org">Columbia College</div>
+          <div class="entry-body">One-on-one and small-group undergraduate tutoring in economics.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Senior Lecturer, Department of Economics</span><span class="entry-date">2016 &ndash; 2021</span></div>
+          <div class="entry-org">East West University, Bangladesh</div>
+          <div class="entry-body"><ul>
+            <li><strong>ECON 101:</strong> Principles of Microeconomics</li>
+            <li><strong>ECON 102:</strong> Introduction to Macroeconomics</li>
+            <li><strong>MAT 100 / MAT 111 / MAT 211:</strong> Mathematics for Business and Economics</li>
+            <li><strong>BUS 101:</strong> Statistics for Business and Economics</li>
+            <li><strong>ECON 304:</strong> Economics of Health</li>
+          </ul>
+          <div style="margin-top:0.4rem;font-size:0.92rem;color:var(--muted);">Contributed to curriculum development and supervised undergraduate research projects.</div></div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Graduate Teaching Fellow</span><span class="entry-date">2016</span></div>
+          <div class="entry-org">BRAC James P Grant School of Public Health, BRAC University</div>
+          <div class="entry-body"><ul>
+            <li><strong>Module:</strong> Health Economics and Health Care Financing Strategy</li>
+          </ul>
+          <div style="margin-top:0.4rem;font-size:0.92rem;color:var(--muted);">Prepared course materials and guided students in fieldwork.</div></div>
+        </div>
+      </div>
+    </div>
 
-  <div class="cv-section">
-    <h2>Peer Review, Manuscripts</h2>
-    <div class="service-grid">
-      <div class="service-item">npj Primary Care Respiratory Medicine <span>1 review</span></div>
-      <div class="service-item">International Journal of COPD <span>3 reviews</span></div>
-      <div class="service-item">Canadian Journal of Respiratory, Critical Care and Sleep Medicine <span>2 reviews</span></div>
-      <div class="service-item">Heliyon <span>2 reviews</span></div>
-      <div class="service-item">Journal of Racial and Ethnic Health Disparities <span>1 review</span></div>
-      <div class="service-item">BMC Health Services Research <span>1 review</span></div>
-      <div class="service-item">PLOS One <span>1 review</span></div>
-      <div class="service-item">Clinical Epidemiology <span>1 review</span></div>
-      <div class="service-item">Social Science and Medicine <span>1 review</span></div>
-      <div class="service-item">Journal of Workplace Behavioral Health <span>1 review</span></div>
-      <div class="service-item">Discover Education <span>1 review</span></div>
+    <!-- SERVICE & LEADERSHIP -->
+    <div id="tab-service" class="tab-panel">
+      <div class="cv-section">
+        <h2>Peer Review, Manuscripts</h2>
+        <div class="service-grid">
+          <div class="service-item">npj Primary Care Respiratory Medicine <span>1 review</span></div>
+          <div class="service-item">International Journal of COPD <span>3 reviews</span></div>
+          <div class="service-item">Canadian Journal of Respiratory, Critical Care and Sleep Medicine <span>2 reviews</span></div>
+          <div class="service-item">Heliyon <span>2 reviews</span></div>
+          <div class="service-item">Journal of Racial and Ethnic Health Disparities <span>1 review</span></div>
+          <div class="service-item">BMC Health Services Research <span>1 review</span></div>
+          <div class="service-item">PLOS One <span>1 review</span></div>
+          <div class="service-item">Clinical Epidemiology <span>1 review</span></div>
+          <div class="service-item">Social Science and Medicine <span>1 review</span></div>
+          <div class="service-item">Journal of Workplace Behavioral Health <span>1 review</span></div>
+          <div class="service-item">Discover Education <span>1 review</span></div>
+        </div>
+      </div>
+      <div class="cv-section">
+        <h2>Peer Review, Abstracts &amp; Proposals</h2>
+        <div class="service-grid">
+          <div class="service-item">ISPOR &amp; ISPOR Europe <span>2025, 2026</span></div>
+          <div class="service-item">CAHSPR <span>2025, 2026</span></div>
+          <div class="service-item">Chest Annual Meeting <span>2026</span></div>
+          <div class="service-item">SMDM 48th Annual Meeting <span>2026</span></div>
+          <div class="service-item">SER Mid-Year Meeting <span>2025</span></div>
+          <div class="service-item">HEMM Poster Abstracts <span>2025</span></div>
+          <div class="service-item">MITACS Umbrella Proposal Review <span>2026</span></div>
+        </div>
+      </div>
+      <div class="cv-section">
+        <h2>Moderator &amp; Facilitator</h2>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Webinar Moderator</span><span class="entry-date">Mar 2026</span></div>
+          <div class="entry-org">SMDM Innovate</div>
+          <div class="entry-body">Moderated a 1.5-hour webinar: &ldquo;From CEA to BCA and Beyond: Benefit-Cost Analysis Concepts, Application, and Challenges.&rdquo;</div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Panel Moderator</span><span class="entry-date">2024, 2025</span></div>
+          <div class="entry-org">GSS Career Development Day, UBC</div>
+          <div class="entry-body">Moderated panels on &ldquo;Navigating Career and Academia in Graduate School&rdquo; (2025) and &ldquo;AI and Its Impact on Careers in the Next Decade&rdquo; (2024).</div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Workshop Facilitator</span><span class="entry-date">Nov 2025</span></div>
+          <div class="entry-org">UBC AI &amp; Future of Medicine Event</div>
+          <div class="entry-body">Guided teams during a Collaborative LLM Evaluation Workshop, supporting hands-on assessment of AI chatbots using clinical scenarios.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Workshop Facilitator</span><span class="entry-date">Nov 2025</span></div>
+          <div class="entry-org">Fall Community Partner Committee Meeting, Centre for Lung Health</div>
+          <div class="entry-body">Co-designed and facilitated an interactive session helping patient partners explore how lived experience strengthens the research cycle.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Integrated Curriculum Facilitator</span><span class="entry-date">Oct 2025</span></div>
+          <div class="entry-org">UBC Health</div>
+          <div class="entry-body">Co-facilitated the &ldquo;Collaborative Decision-Making&rdquo; module, leading workshop discussions and large-group debrief sessions.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-header"><span class="entry-title">Invited Roundtable Speaker</span><span class="entry-date">Mar 2026</span></div>
+          <div class="entry-org">Multidisciplinary Undergraduate Research Conference (MURC), UBC</div>
+          <div class="entry-body">Participated as a roundtable speaker in a networking session for undergraduate researchers.</div>
+        </div>
+      </div>
+      <div class="cv-section">
+        <h2>Leadership &amp; Committee Roles</h2>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Working Group Member, EDI</span><span class="entry-date">2025 &ndash; Present</span></div><div class="entry-org">Canadian Thoracic Society</div></div>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Planning Committee Member</span><span class="entry-date">2025 &ndash; Present</span></div><div class="entry-org">Community Partner Committee, Legacy for Airway Health</div></div>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Education Committee Member</span><span class="entry-date">2025 &ndash; Present</span></div><div class="entry-org">Society for Medical Decision Making (SMDM)</div></div>
+        <div class="entry"><div class="entry-header"><span class="entry-title">GSS Representative, Survey Governance Committee</span><span class="entry-date">2024 &ndash; 2026</span></div><div class="entry-org">UBC</div></div>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Advisory Committee Member</span><span class="entry-date">2024 &ndash; 2026</span></div><div class="entry-org">Equity and Inclusion Office, UBC</div></div>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Graduate Program Advisory Committee Member</span><span class="entry-date">2024 &ndash; 2025</span></div><div class="entry-org">Faculty of Pharmaceutical Sciences, UBC</div></div>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Education Committee Member</span><span class="entry-date">2024 &ndash; 2025</span></div><div class="entry-org">ISPOR Global Student Network</div></div>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Organizing Committee Member</span><span class="entry-date">2024, 2025</span></div><div class="entry-org">Health Economics Methodology Meeting (HEMM)</div></div>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Student Member, Graduate Student Experience Working Group</span><span class="entry-date">2024 &ndash; 2025</span></div><div class="entry-org">UBC</div></div>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Journal Club Coordinator</span><span class="entry-date">2024</span></div><div class="entry-org">Sci-Chat, RESP Lab, UBC</div></div>
+      </div>
+      <div class="cv-section">
+        <h2>Volunteering</h2>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Research Presentation Adjudicator</span><span class="entry-date">2025, 2026</span></div><div class="entry-org">Multidisciplinary Undergraduate Research Conference</div></div>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Academic Facilitator &amp; Admissions Interview Evaluator</span><span class="entry-date">2025, 2026</span></div><div class="entry-org">Faculty of Pharmaceutical Sciences, UBC</div></div>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Youth Leadership Program Volunteer</span><span class="entry-date">2022 &ndash; 2023</span></div><div class="entry-org">Youth Leadership Millennium (YLM), SUCCESS</div></div>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Youth Skills Program Volunteer</span><span class="entry-date">2022 &ndash; 2023</span></div><div class="entry-org">Frog Hollow Neighbourhood House</div></div>
+        <div class="entry"><div class="entry-header"><span class="entry-title">Community Event Volunteer</span><span class="entry-date">2022</span></div><div class="entry-org">CityHive Vancouver</div></div>
+      </div>
     </div>
-  </div>
 
-  <div class="cv-section">
-    <h2>Peer Review, Abstracts &amp; Proposals</h2>
-    <div class="service-grid">
-      <div class="service-item">ISPOR &amp; ISPOR Europe <span>2025, 2026</span></div>
-      <div class="service-item">CAHSPR <span>2025, 2026</span></div>
-      <div class="service-item">Chest Annual Meeting <span>2026</span></div>
-      <div class="service-item">SMDM 48th Annual Meeting <span>2026</span></div>
-      <div class="service-item">SER Mid-Year Meeting <span>2025</span></div>
-      <div class="service-item">HEMM Poster Abstracts <span>2025</span></div>
-      <div class="service-item">MITACS Umbrella Proposal Review <span>2026</span></div>
+    <!-- FULL CV -->
+    <div id="tab-cv" class="tab-panel">
+      <div class="cv-section">
+        <h2>Full CV</h2>
+        <p style="font-size:1.08rem;font-weight:300;line-height:1.8;margin-bottom:1.5rem;">Click below to view or download the full CV as a PDF.</p>
+        <a class="download-btn" href="https://jeenatm.github.io/CV_Jeenat_Mehareen.pdf" target="_blank">&#8599; View Full CV (PDF)</a>
+        &nbsp;&nbsp;
+        <a class="download-btn" href="https://jeenatm.github.io/CV_Jeenat_Mehareen.pdf" download>&#8595; Download CV</a>
+      </div>
     </div>
-  </div>
 
-  <div class="cv-section">
-    <h2>Moderator &amp; Facilitator</h2>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Webinar Moderator</span><span class="entry-date">Mar 2026</span></div>
-      <div class="entry-org">SMDM Innovate</div>
-      <div class="entry-body">Moderated a 1.5-hour webinar: &ldquo;From CEA to BCA and Beyond: Benefit-Cost Analysis Concepts, Application, and Challenges.&rdquo;</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Panel Moderator</span><span class="entry-date">2024, 2025</span></div>
-      <div class="entry-org">GSS Career Development Day, UBC</div>
-      <div class="entry-body">Moderated panels on &ldquo;Navigating Career and Academia in Graduate School&rdquo; (2025) and &ldquo;AI and Its Impact on Careers in the Next Decade&rdquo; (2024).</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Workshop Facilitator</span><span class="entry-date">Nov 2025</span></div>
-      <div class="entry-org">UBC AI &amp; Future of Medicine Event</div>
-      <div class="entry-body">Guided teams during a Collaborative LLM Evaluation Workshop, supporting hands-on assessment of AI chatbots using clinical scenarios.</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Workshop Facilitator</span><span class="entry-date">Nov 2025</span></div>
-      <div class="entry-org">Fall Community Partner Committee Meeting, Centre for Lung Health</div>
-      <div class="entry-body">Co-designed and facilitated an interactive session helping patient partners explore how lived experience strengthens the research cycle.</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Integrated Curriculum Facilitator</span><span class="entry-date">Oct 2025</span></div>
-      <div class="entry-org">UBC Health</div>
-      <div class="entry-body">Co-facilitated the &ldquo;Collaborative Decision-Making&rdquo; module, leading workshop discussions and large-group debrief sessions.</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Invited Roundtable Speaker</span><span class="entry-date">Mar 2026</span></div>
-      <div class="entry-org">Multidisciplinary Undergraduate Research Conference (MURC), UBC</div>
-      <div class="entry-body">Participated as a roundtable speaker in a networking session for undergraduate researchers.</div>
-    </div>
-  </div>
+  </div><!-- end layout -->
 
-  <div class="cv-section">
-    <h2>Leadership &amp; Committee Roles</h2>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Working Group Member, EDI</span><span class="entry-date">2025 &ndash; Present</span></div>
-      <div class="entry-org">Canadian Thoracic Society</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Planning Committee Member</span><span class="entry-date">2025 &ndash; Present</span></div>
-      <div class="entry-org">Community Partner Committee, Legacy for Airway Health</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Education Committee Member</span><span class="entry-date">2025 &ndash; Present</span></div>
-      <div class="entry-org">Society for Medical Decision Making (SMDM)</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">GSS Representative, Survey Governance Committee</span><span class="entry-date">2024 &ndash; 2026</span></div>
-      <div class="entry-org">UBC</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Advisory Committee Member</span><span class="entry-date">2024 &ndash; 2026</span></div>
-      <div class="entry-org">Equity and Inclusion Office, UBC</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Graduate Program Advisory Committee Member</span><span class="entry-date">2024 &ndash; 2025</span></div>
-      <div class="entry-org">Faculty of Pharmaceutical Sciences, UBC</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Education Committee Member</span><span class="entry-date">2024 &ndash; 2025</span></div>
-      <div class="entry-org">ISPOR Global Student Network</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Organizing Committee Member</span><span class="entry-date">2024, 2025</span></div>
-      <div class="entry-org">Health Economics Methodology Meeting (HEMM)</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Student Member, Graduate Student Experience Working Group</span><span class="entry-date">2024 &ndash; 2025</span></div>
-      <div class="entry-org">UBC</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Journal Club Coordinator</span><span class="entry-date">2024</span></div>
-      <div class="entry-org">Sci-Chat, RESP Lab, UBC</div>
-    </div>
-  </div>
-
-  <div class="cv-section">
-    <h2>Volunteering</h2>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Research Presentation Adjudicator</span><span class="entry-date">2025, 2026</span></div>
-      <div class="entry-org">Multidisciplinary Undergraduate Research Conference</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Academic Facilitator &amp; Admissions Interview Evaluator</span><span class="entry-date">2025, 2026</span></div>
-      <div class="entry-org">Faculty of Pharmaceutical Sciences, UBC</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Youth Leadership Program Volunteer</span><span class="entry-date">2022 &ndash; 2023</span></div>
-      <div class="entry-org">Youth Leadership Millennium (YLM), SUCCESS</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Youth Skills Program Volunteer</span><span class="entry-date">2022 &ndash; 2023</span></div>
-      <div class="entry-org">Frog Hollow Neighbourhood House</div>
-    </div>
-    <div class="entry">
-      <div class="entry-header"><span class="entry-title">Community Event Volunteer</span><span class="entry-date">2022</span></div>
-      <div class="entry-org">CityHive Vancouver</div>
-    </div>
-  </div>
-</div>
-
-<!-- FULL CV -->
-<div id="tab-cv" class="tab-panel">
-  <div class="cv-section">
-    <h2>Full CV</h2>
-    <p style="font-size:1rem;font-weight:300;line-height:1.8;margin-bottom:1.5rem;">Click below to view or download the full CV as a PDF.</p>
-    <a class="download-btn" href="https://jeenatm.github.io/CV_Jeenat_Mehareen.pdf" target="_blank">&#8599; View Full CV (PDF)</a>
-    &nbsp;&nbsp;
-    <a class="download-btn" href="https://jeenatm.github.io/CV_Jeenat_Mehareen.pdf" download>&#8595; Download CV</a>
-  </div>
-</div>
+</div><!-- end layout wrapper -->
 
 <footer>
   <p>Jeenat Mehareen &nbsp;&middot;&nbsp; PhD Candidate, Pharmaceutical Sciences, UBC</p>
@@ -628,13 +602,28 @@ footer p{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;
 </footer>
 
 <script>
+function toggleNav(){
+  var btn=document.getElementById('navToggle');
+  var dd=document.getElementById('navDropdown');
+  btn.classList.toggle('open');
+  dd.classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var wrapper=document.querySelector('.nav-wrapper');
+  if(!wrapper.contains(e.target)){
+    document.getElementById('navToggle').classList.remove('open');
+    document.getElementById('navDropdown').classList.remove('open');
+  }
+});
 function showTab(name,btn){
   var panels=document.querySelectorAll('.tab-panel');
-  var buttons=document.querySelectorAll('.tab-btn');
+  var buttons=document.querySelectorAll('.nav-item');
   for(var i=0;i<panels.length;i++){panels[i].classList.remove('active');}
   for(var i=0;i<buttons.length;i++){buttons[i].classList.remove('active');}
   document.getElementById('tab-'+name).classList.add('active');
   btn.classList.add('active');
+  document.getElementById('navToggle').classList.remove('open');
+  document.getElementById('navDropdown').classList.remove('open');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
