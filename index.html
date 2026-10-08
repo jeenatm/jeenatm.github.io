@@ -25,22 +25,22 @@ gtag('config', 'G-MDRM25BKH3');
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--paper:#ffffff;--panel:#f4f6f7;--ink:#1f2529;--muted:#5d676e;--accent:#7A1E2C;--accent-tint:#f9eced;--line:#dfe4e7;--serif:'Literata',Georgia,'Times New Roman',serif;--sans:'Libre Franklin',system-ui,-apple-system,'Segoe UI',sans-serif}
+:root{--paper:#ffffff;--panel:#f4f6f7;--ink:#3b3638;--muted:#7d7779;--accent:#7A1E2C;--accent-tint:#f9eced;--line:#dfe4e7;--serif:'Lato',system-ui,-apple-system,'Segoe UI',sans-serif;--sans:'Lato',system-ui,-apple-system,'Segoe UI',sans-serif}
 html{font-size:15px}
-html,body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-optical-sizing:auto;line-height:1.65;min-height:100vh;-webkit-font-smoothing:antialiased}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-weight:300;font-optical-sizing:auto;line-height:1.65;min-height:100vh;-webkit-font-smoothing:antialiased}
 a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(122,30,44,.35);text-underline-offset:2px}
 a:hover{text-decoration-color:var(--accent)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-strong{font-weight:600}
+strong{font-weight:400}
 
 /* header */
 header{padding:2.25rem 3rem 1.9rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:1.5rem 2rem;flex-wrap:wrap;background:var(--paper)}
 .header-left{display:flex;align-items:center;gap:1.4rem}
 .header-photo{width:84px;height:84px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block}
-.name-block h1{font-family:var(--serif);font-size:clamp(1.9rem,3.2vw,2.4rem);font-weight:600;letter-spacing:-0.012em;line-height:1.1;color:var(--accent)}
+.name-block h1{font-family:var(--serif);font-size:clamp(2rem,3.4vw,2.6rem);font-weight:300;letter-spacing:0;line-height:1.1;color:var(--accent)}
 .name-block h1 em{font-style:normal;color:inherit}
 .name-block p{margin-top:0.35rem;font-family:var(--sans);font-size:0.86rem;color:var(--muted)}
 .header-links{display:flex;align-items:center;gap:0.45rem;flex-wrap:wrap;font-family:var(--sans);font-size:0.8rem}
@@ -51,21 +51,21 @@ header{padding:2.25rem 3rem 1.9rem;border-bottom:1px solid var(--line);display:f
 .layout{display:flex;min-height:calc(100vh - 130px);max-width:1180px;margin:0 auto;width:100%}
 .sidebar{width:220px;min-width:220px;flex-shrink:0;border-right:1px solid var(--line);padding:2rem 0;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--paper)}
 .sidebar nav{display:flex;flex-direction:column}
-.sidebar-btn{font-family:var(--sans);font-size:0.9rem;color:var(--muted);background:none;border:none;border-left:3px solid transparent;padding:0.55rem 1.5rem;cursor:pointer;text-align:left;width:100%;white-space:nowrap}
-.sidebar-btn:hover{color:var(--ink)}
-.sidebar-btn.active{color:var(--accent);font-weight:600;border-left-color:var(--accent);background:var(--accent-tint)}
+.sidebar-btn{font-family:var(--sans);font-size:1rem;font-weight:300;letter-spacing:0.01em;color:var(--ink);background:none;border:none;border-left:3px solid transparent;padding:0.55rem 1.5rem;cursor:pointer;text-align:left;width:100%;white-space:nowrap}
+.sidebar-btn:hover{color:var(--accent)}
+.sidebar-btn.active{color:var(--accent);font-weight:400;border-left-color:var(--accent);background:var(--accent-tint)}
 .content{flex:1;padding:2.75rem 4rem 4rem;max-width:840px}
 .tab-panel{display:none}
 .tab-panel.active{display:block}
 
 /* sections */
 .cv-section{margin-bottom:2.75rem}
-.cv-section h2{font-family:var(--sans);font-size:1.02rem;font-weight:600;color:var(--accent);margin-bottom:1.2rem;padding-bottom:0.45rem;border-bottom:1px solid var(--line)}
+.cv-section h2{font-family:var(--sans);font-size:1.15rem;font-weight:400;letter-spacing:0.01em;color:var(--accent);margin-bottom:1.2rem;padding-bottom:0.45rem;border-bottom:1px solid var(--line)}
 
 /* entries */
 .entry{margin-bottom:1.6rem}
 .entry-header{display:flex;justify-content:space-between;align-items:baseline;gap:0.25rem 1rem;flex-wrap:wrap}
-.entry-title{font-size:1.06rem;font-weight:600;line-height:1.4}
+.entry-title{font-size:1.08rem;font-weight:400;line-height:1.4}
 .entry-date{font-family:var(--sans);font-size:0.8rem;color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
 .entry-org{font-style:italic;color:var(--muted);margin-bottom:0.3rem}
 .entry-body{font-size:1rem;line-height:1.65}
@@ -93,7 +93,7 @@ header{padding:2.25rem 3rem 1.9rem;border-bottom:1px solid var(--line);display:f
 
 /* presentations */
 .pres-item{margin-bottom:1.4rem;padding-left:1rem;border-left:2px solid var(--line)}
-.pres-title{font-size:1.04rem;font-weight:600;line-height:1.45;margin-bottom:0.2rem}
+.pres-title{font-size:1.06rem;font-weight:400;line-height:1.45;margin-bottom:0.2rem}
 .pres-venues{font-size:0.97rem;line-height:1.6}
 .venue{margin-bottom:0.15rem}
 .pres-type{display:inline-block;font-family:var(--sans);font-size:0.74rem;font-weight:500;margin-right:0.45rem;padding:0.05rem 0.5rem;border:1px solid;border-radius:2px;line-height:1.5}
@@ -106,7 +106,7 @@ header{padding:2.25rem 3rem 1.9rem;border-bottom:1px solid var(--line);display:f
 /* stats strip */
 .stats{background:var(--accent-tint);border:1px solid var(--line);border-left:3px solid var(--accent);padding:1.4rem 1.8rem 1.2rem;margin-bottom:2.5rem}
 .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(5.6rem,1fr));gap:1rem 1.25rem;margin-bottom:1rem}
-.stat-num{font-size:1.6rem;font-weight:600;line-height:1.1;color:var(--accent);font-variant-numeric:lining-nums}
+.stat-num{font-size:1.7rem;font-weight:300;line-height:1.1;color:var(--accent);font-variant-numeric:lining-nums}
 .stat-label{font-family:var(--sans);font-size:0.78rem;color:var(--muted);margin-top:0.15rem;line-height:1.3}
 .stats-skills{border-top:1px solid var(--line);padding-top:0.9rem}
 .stats-skills-title{font-family:var(--sans);font-size:0.8rem;font-weight:600;color:var(--accent)}
@@ -117,7 +117,7 @@ header{padding:2.25rem 3rem 1.9rem;border-bottom:1px solid var(--line);display:f
 .service-item span{display:block;font-family:var(--sans);font-size:0.76rem;color:var(--accent)}
 
 /* about */
-.intro{font-size:1.18rem;line-height:1.6;font-weight:400;color:var(--ink);border-left:3px solid var(--accent);padding:0.1rem 0 0.1rem 1.3rem;margin:0 0 1.4rem}
+.intro{font-size:1.2rem;line-height:1.65;font-weight:300;color:var(--ink);border-left:3px solid var(--accent);padding:0.1rem 0 0.1rem 1.3rem;margin:0 0 1.4rem}
 .about-text p{line-height:1.7;margin-bottom:1rem}
 .interest-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
 .interest-list li{padding:0.55rem 1rem;border-left:2px solid var(--accent);background:var(--accent-tint)}
