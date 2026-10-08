@@ -23,134 +23,131 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-MDRM25BKH3');
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#1a1a18;--muted:#6b6b5f;--pale:#f5f3ee;--accent:#7A1E2C;--accent-light:#f9eced;--line:#d9d4c7;--sidebar-w:240px}
-html,body{background:var(--pale);color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif;min-height:100vh}
+:root{--paper:#ffffff;--panel:#f4f6f7;--ink:#1f2529;--muted:#5d676e;--accent:#7A1E2C;--accent-tint:#f9eced;--line:#dfe4e7;--serif:'Literata',Georgia,'Times New Roman',serif;--sans:'Libre Franklin',system-ui,-apple-system,'Segoe UI',sans-serif}
+html{font-size:17px}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-optical-sizing:auto;line-height:1.65;min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(122,30,44,.35);text-underline-offset:2px}
+a:hover{text-decoration-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+strong{font-weight:600}
 
-/* ── HEADER ── */
-header{padding:2.5rem 3rem 2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;background:var(--pale)}
-.header-left{display:flex;align-items:center;gap:1.5rem}
-.header-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--line);flex-shrink:0;display:block}
-.name-block h1{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:300;letter-spacing:0.04em;line-height:1}
-.name-block h1 em{font-style:italic;color:var(--accent)}
-.name-block p{margin-top:0.4rem;font-family:'DM Mono',monospace;font-size:0.76rem;font-weight:300;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted)}
-.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:0.8rem}
-.header-links{display:flex;flex-direction:row;align-items:center;gap:1.5rem;flex-wrap:wrap}
-.header-links a{font-family:'DM Mono',monospace;font-size:0.76rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;transition:color 0.2s}
-.header-links a:hover{color:var(--accent)}
+/* header */
+header{padding:2.25rem 3rem 1.9rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:1.5rem 2rem;flex-wrap:wrap;background:var(--paper)}
+.header-left{display:flex;align-items:center;gap:1.4rem}
+.header-photo{width:84px;height:84px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block}
+.name-block h1{font-family:var(--serif);font-size:clamp(2rem,3.6vw,2.75rem);font-weight:600;letter-spacing:-0.012em;line-height:1.1;color:var(--accent)}
+.name-block h1 em{font-style:normal;color:inherit}
+.name-block p{margin-top:0.35rem;font-family:var(--sans);font-size:0.86rem;color:var(--muted)}
+.header-links{display:flex;align-items:center;gap:0.45rem;flex-wrap:wrap;font-family:var(--sans);font-size:0.8rem}
+.header-links a{color:var(--accent);background:var(--accent-tint);border:1px solid var(--accent);border-radius:2px;padding:0.3rem 0.7rem;text-decoration:none;transition:background .15s,color .15s}
+.header-links a:hover{background:var(--accent);color:#fff}
 
-/* ── NAV DROPDOWN ── */
-.nav-wrapper{position:relative;display:flex;align-items:center}
-.nav-toggle{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);background:none;border:1px solid var(--line);padding:0.55rem 1.1rem;cursor:pointer;transition:all 0.2s;white-space:nowrap}
-.nav-toggle:hover{border-color:var(--accent);color:var(--accent)}
-.nav-toggle.open{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
-.nav-dropdown{display:none;position:absolute;top:calc(100% + 6px);right:0;background:var(--pale);border:1px solid var(--line);min-width:200px;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,0.08)}
-.nav-dropdown.open{display:block}
-.nav-item{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);background:none;border:none;border-left:3px solid transparent;padding:0.85rem 1.4rem;cursor:pointer;text-align:left;width:100%;display:block;transition:color 0.2s,border-color 0.2s,background 0.2s}
-.nav-item:hover{color:var(--ink);background:rgba(0,0,0,0.02)}
-.nav-item.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-light)}
-
-/* ── LAYOUT ── */
-.layout{display:flex;flex-direction:row;min-height:calc(100vh - 130px);max-width:1200px;margin:0 auto;width:100%}
-.sidebar{width:220px;min-width:220px;flex-shrink:0;border-right:1px solid var(--line);padding:2rem 0;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--pale)}
+/* layout */
+.layout{display:flex;min-height:calc(100vh - 130px);max-width:1180px;margin:0 auto;width:100%}
+.sidebar{width:220px;min-width:220px;flex-shrink:0;border-right:1px solid var(--line);padding:2rem 0;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--paper)}
 .sidebar nav{display:flex;flex-direction:column}
-.sidebar-btn{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);background:none;border:none;border-left:3px solid transparent;padding:0.85rem 1.6rem;cursor:pointer;text-align:left;transition:color 0.2s,border-color 0.2s,background 0.2s;white-space:nowrap;width:100%}
-.sidebar-btn:hover{color:var(--ink);background:rgba(0,0,0,0.02)}
-.sidebar-btn.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-light)}
-.content{flex:1;padding:3rem 4rem 4rem;overflow-y:auto;max-width:860px}
+.sidebar-btn{font-family:var(--sans);font-size:0.9rem;color:var(--muted);background:none;border:none;border-left:3px solid transparent;padding:0.55rem 1.5rem;cursor:pointer;text-align:left;width:100%;white-space:nowrap}
+.sidebar-btn:hover{color:var(--ink)}
+.sidebar-btn.active{color:var(--accent);font-weight:600;border-left-color:var(--accent);background:var(--accent-tint)}
+.content{flex:1;padding:2.75rem 4rem 4rem;max-width:840px}
 .tab-panel{display:none}
 .tab-panel.active{display:block}
 
-/* ── SECTIONS ── */
-.cv-section{margin-bottom:2.8rem}
-.cv-section h2{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;padding-bottom:0.4rem;border-bottom:1px solid var(--line)}
+/* sections */
+.cv-section{margin-bottom:2.75rem}
+.cv-section h2{font-family:var(--sans);font-size:1.02rem;font-weight:600;color:var(--accent);margin-bottom:1.2rem;padding-bottom:0.45rem;border-bottom:1px solid var(--line)}
 
-/* ── ENTRIES ── */
-.entry{margin-bottom:1.8rem}
-.entry-header{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:0.15rem}
-.entry-title{font-size:1.15rem;font-weight:400;line-height:1.4}
-.entry-date{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;color:var(--accent);white-space:nowrap}
-.entry-org{font-size:0.98rem;color:var(--muted);font-style:italic;margin-bottom:0.35rem}
-.entry-body{font-size:1.08rem;font-weight:300;line-height:1.8;color:var(--ink)}
-.entry-body ul{list-style:none;margin-top:0.4rem}
-.entry-body ul li{padding-left:1.2em;position:relative;margin-bottom:0.25rem}
-.entry-body ul li::before{content:'○';position:absolute;left:0;color:var(--accent);font-size:0.6em;top:0.35em}
+/* entries */
+.entry{margin-bottom:1.6rem}
+.entry-header{display:flex;justify-content:space-between;align-items:baseline;gap:0.25rem 1rem;flex-wrap:wrap}
+.entry-title{font-size:1.06rem;font-weight:600;line-height:1.4}
+.entry-date{font-family:var(--sans);font-size:0.8rem;color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
+.entry-org{font-style:italic;color:var(--muted);margin-bottom:0.3rem}
+.entry-body{font-size:1rem;line-height:1.65}
+.entry-body ul{list-style:none;margin-top:0.3rem}
+.entry-body ul li{padding-left:1.1em;position:relative;margin-bottom:0.15rem}
+.entry-body ul li::before{content:'\25CB';position:absolute;left:0;top:0.35em;font-size:0.6em;color:var(--accent)}
+.note{margin-top:0.35rem;font-size:0.94rem;color:var(--muted)}
 
-/* ── SKILL TAGS ── */
-.skill-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.5rem}
-.skill-tag{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--accent);color:var(--accent);background:var(--accent-light)}
+/* tags */
+.skill-tags,.tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.55rem}
+.skill-tag,.tag{font-family:var(--sans);font-size:0.74rem;color:var(--accent);background:var(--accent-tint);border:1px solid var(--accent);padding:0.15rem 0.55rem;border-radius:2px}
+.stats .tag{background:#fff}
 
-/* ── PUBLICATIONS ── */
-.pub-item{display:grid;grid-template-columns:2.2rem 1fr;gap:0.5rem;margin-bottom:1.1rem;font-size:1.08rem;font-weight:300;line-height:1.8}
-.pub-num{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);padding-top:0.3em}
-.pub-text em{font-style:italic}
-.pub-text strong{font-weight:600}
-.pub-text a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-light)}
-.pub-text a:hover{border-bottom-color:var(--accent)}
-.inpress{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:#2a5c3f;border:1px solid #2a5c3f;padding:0.1rem 0.4rem;margin-left:0.4rem;vertical-align:middle}
-.editorial{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:#7A1E2C;border:1px solid #7A1E2C;padding:0.1rem 0.4rem;margin-left:0.4rem;vertical-align:middle}
-.research-letter{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:#2c4a7a;border:1px solid #2c4a7a;padding:0.1rem 0.4rem;margin-left:0.4rem;vertical-align:middle}
+/* publications */
+.pub-item{display:grid;grid-template-columns:2rem 1fr;gap:0.4rem;margin-bottom:0.95rem;line-height:1.6}
+.pub-num{font-family:var(--sans);font-size:0.8rem;color:var(--accent);padding-top:0.2em;font-variant-numeric:tabular-nums}
+.inpress,.editorial,.research-letter{font-family:var(--sans);font-size:0.72rem;font-weight:500;color:var(--accent);border:1px solid currentColor;padding:0.05rem 0.4rem;border-radius:2px;margin-left:0.35rem;white-space:nowrap}
+.inpress{color:#2a5c3f}
+.research-letter{color:#2c4a7a}
 
-/* ── AWARDS ── */
-.award-item{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:0.6rem 0;border-bottom:1px solid var(--line);font-size:1.08rem;font-weight:300}
-.award-year{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;color:var(--accent);white-space:nowrap}
+/* awards */
+.award-item{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:0.55rem 0;border-bottom:1px solid var(--line)}
+.award-year{font-family:var(--sans);font-size:0.8rem;color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
+.award-amount{display:block;font-family:var(--sans);font-size:0.78rem;color:var(--muted);margin-top:0.1rem}
 
-/* ── PRESENTATIONS ── */
-.upcoming-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.6rem;background:var(--accent);color:var(--pale);margin-left:0.6rem;vertical-align:middle}
-.pres-item{margin-bottom:1.5rem;padding-left:1rem;border-left:2px solid var(--line)}
-.pres-item.upcoming{border-left-color:var(--accent);background:var(--accent-light);padding:0.8rem 1rem;border-radius:0 4px 4px 0}
-.pres-title{font-size:1.08rem;font-weight:400;line-height:1.5;margin-bottom:0.2rem}
-.pres-meta{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.15rem}
-.pres-type{display:inline-block;font-family:'DM Mono',monospace;font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.22rem 0.65rem;margin-right:0.4rem;margin-top:0.3rem;font-weight:400}
-.pres-type.oral{background:#f9eced;color:#7A1E2C;border:1px solid #7A1E2C}
-.pres-type.poster{background:#fdf3e3;color:#7a4f00;border:1px solid #7a4f00}
-.pres-type.invited{background:#e8f4ee;color:#1a5c3a;border:1px solid #1a5c3a}
-.pres-type.rapidfire{background:#e8f4ee;color:#1a5c3a;border:1px solid #1a5c3a}
+/* presentations */
+.pres-item{margin-bottom:1.4rem;padding-left:1rem;border-left:2px solid var(--line)}
+.pres-title{font-size:1.04rem;font-weight:600;line-height:1.45;margin-bottom:0.2rem}
+.pres-venues{font-size:0.97rem;line-height:1.6}
+.venue{margin-bottom:0.15rem}
+.pres-type{display:inline-block;font-family:var(--sans);font-size:0.74rem;font-weight:500;margin-right:0.45rem;padding:0.05rem 0.5rem;border:1px solid;border-radius:2px;line-height:1.5}
+.pres-type.oral{color:#7A1E2C;background:#f9eced}
+.pres-type.poster{color:#7a4f00;background:#fdf3e3}
+.pres-type.invited,.pres-type.rapidfire{color:#1a5c3a;background:#e8f4ee}
+.venue-date{font-family:var(--sans);font-size:0.8rem;color:var(--accent)}
+.venue-link{font-family:var(--sans);font-size:0.8rem}
 
-/* ── SERVICE ── */
-.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 2rem}
-.service-item{font-size:1.05rem;font-weight:300;line-height:1.6;padding:0.3rem 0;border-bottom:1px solid var(--line)}
-.service-item span{font-family:'DM Mono',monospace;font-size:0.66rem;color:var(--accent);display:block;margin-bottom:0.1rem}
+/* stats strip */
+.stats{background:var(--accent-tint);border:1px solid var(--line);border-left:3px solid var(--accent);padding:1.4rem 1.8rem 1.2rem;margin-bottom:2.5rem}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(5.6rem,1fr));gap:1rem 1.25rem;margin-bottom:1rem}
+.stat-num{font-size:1.75rem;font-weight:600;line-height:1.1;color:var(--accent);font-variant-numeric:lining-nums}
+.stat-label{font-family:var(--sans);font-size:0.78rem;color:var(--muted);margin-top:0.15rem;line-height:1.3}
+.stats-skills{border-top:1px solid var(--line);padding-top:0.9rem}
+.stats-skills-title{font-family:var(--sans);font-size:0.8rem;font-weight:600;color:var(--accent)}
 
-/* ── ABOUT ── */
-.about-text p{font-size:1.08rem;font-weight:300;line-height:1.9;margin-bottom:1.2rem}
-.interest-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-top:0.5rem}
-.interest-list li{font-size:1.08rem;font-weight:300;padding:0.6rem 1rem;border-left:2px solid var(--accent);background:var(--accent-light)}
+/* service */
+.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 2rem}
+.service-item{padding:0.4rem 0;border-bottom:1px solid var(--line);line-height:1.45}
+.service-item span{display:block;font-family:var(--sans);font-size:0.76rem;color:var(--accent)}
 
-/* ── CV TAB ── */
-.download-btn{display:inline-block;margin-bottom:1.5rem;padding:0.65rem 1.4rem;border:1px solid var(--accent);color:var(--accent);font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s}
-.download-btn:hover{background:var(--accent);color:var(--pale)}
+/* about */
+.intro{font-size:1.3rem;line-height:1.55;font-weight:400;color:var(--ink);border-left:3px solid var(--accent);padding:0.1rem 0 0.1rem 1.3rem;margin:0 0 1.4rem}
+.about-text p{line-height:1.7;margin-bottom:1rem}
+.interest-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.interest-list li{padding:0.55rem 1rem;border-left:2px solid var(--accent);background:var(--accent-tint)}
 
-/* ── FOOTER ── */
-footer{border-top:1px solid var(--line);padding:1.2rem 3rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
-footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em;color:var(--muted)}
+/* cv */
+.download-btn{display:inline-block;margin:0 0.6rem 1rem 0;padding:0.55rem 1.1rem;border:1px solid var(--accent);border-radius:3px;color:var(--accent);font-family:var(--sans);font-size:0.86rem;font-weight:500;text-decoration:none}
+.download-btn:hover{background:var(--accent);color:#fff}
 
-/* ── RESPONSIVE ── */
-.mobile-menu-btn{display:none;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;background:none;border:1px solid var(--line);color:var(--ink);padding:0.5rem 1rem;cursor:pointer;margin:0.8rem 1.5rem}
-.mobile-menu-btn:hover{border-color:var(--accent);color:var(--accent)}
+/* footer */
+footer{border-top:1px solid var(--line);padding:1.1rem 3rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.4rem}
+footer p{font-family:var(--sans);font-size:0.78rem;color:var(--muted)}
+
+/* responsive */
+.mobile-menu-btn{display:none;font-family:var(--sans);font-size:0.86rem;background:none;border:1px solid var(--line);border-radius:3px;color:var(--ink);padding:0.45rem 0.9rem;cursor:pointer;margin:0.8rem 1.25rem}
 @media(max-width:768px){
-  header{padding:1.2rem 1.5rem;flex-direction:column;align-items:flex-start;gap:0.8rem}
-  .header-left{flex-direction:row;align-items:center;gap:1rem}
-  .header-photo{width:55px;height:55px}
-  .header-links{flex-direction:column;align-items:flex-start;gap:0.3rem}
-  .header-links a{font-size:0.7rem}
+  html{font-size:16px}
+  header{padding:1.25rem;flex-direction:column;align-items:flex-start;gap:0.8rem}
+  .header-photo{width:60px;height:60px}
+  .header-links{gap:0.4rem}
   .layout{flex-direction:column}
-  .sidebar{display:none;width:100%;min-width:unset;height:auto;position:relative;border-right:none;border-bottom:1px solid var(--line);padding:0.5rem 0;background:var(--pale)}
+  .sidebar{display:none;width:100%;min-width:unset;height:auto;position:relative;border-right:none;border-bottom:1px solid var(--line);padding:0.3rem 0}
   .sidebar.open{display:block}
-  .sidebar nav{flex-direction:column}
-  .sidebar-btn{padding:0.8rem 1.5rem;font-size:0.66rem;border-left:none;border-bottom:1px solid var(--line);width:100%;white-space:normal}
-  .sidebar-btn.active{border-left:3px solid var(--accent);background:var(--accent-light)}
+  .sidebar-btn{padding:0.7rem 1.25rem;white-space:normal}
   .mobile-menu-btn{display:block}
-  .content{padding:1.5rem 1.2rem 3rem}
+  .content{padding:1.5rem 1.25rem 3rem}
   .service-grid{grid-template-columns:1fr}
-  footer{padding:1rem 1.5rem;flex-direction:column;gap:0.3rem}
+  .intro{font-size:1.15rem}
+  footer{padding:1rem 1.25rem;flex-direction:column}
 }
-@media(min-width:769px){
-  .mobile-menu-btn{display:none!important}
-  .sidebar{display:block!important}
-}
+@media(min-width:769px){.mobile-menu-btn{display:none!important}.sidebar{display:block!important}}
 </style>
 </head>
 <body>
@@ -194,12 +191,13 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
       <div class="cv-section">
         <h2>About Me</h2>
         <div class="about-text">
-          <blockquote style="border-left:3px solid var(--accent);padding-left:1.2rem;margin-bottom:1.4rem;font-size:1.08rem;font-weight:300;line-height:1.9;font-style:italic;color:var(--ink);">My journey into health research is rooted in personal experience. Growing up with asthma in Bangladesh, I witnessed the challenges of managing a chronic illness within an under-resourced healthcare system. These early experiences shaped my commitment to improving health outcomes.</blockquote>
+          <blockquote class="intro">My journey into health research is rooted in personal experience. Growing up with asthma in Bangladesh, I witnessed the challenges of managing a chronic illness within an under-resourced healthcare system. These early experiences shaped my commitment to improving health outcomes.</blockquote>
           <p>Always curious to learn more and open to meaningful conversations and collaborations. Please do not hesitate to connect!</p>
         </div>
       </div>
       <div class="cv-section">
         <h2>Recent</h2>
+        <div class="award-item"><span>New paper in <a href="https://doi.org/10.1186/s41512-026-00242-x" target="_blank"><em>Diagnostic and Prognostic Research</em></a> recalibrating the ACCEPT COPD exacerbation prediction tool for global use</span><span class="award-year">2026</span></div>
         <div class="award-item"><span>Started as a Visiting Researcher at the Saw Swee Hock School of Public Health, NUS</span><span class="award-year">Aug 2026</span></div>
         <div class="award-item"><span>Received a <a href="https://lnkd.in/p/g5J7H_V2" target="_blank">shAIRe Rising Stars Professional Development Award</a> supporting conference travel</span><span class="award-year">2026</span></div>
         <div class="award-item"><span>New paper in <a href="https://doi.org/10.1136/thorax-2026-224814" target="_blank"><em>Thorax</em></a> on predicting COPD exacerbations</span><span class="award-year">Jun 2026</span></div>
@@ -298,56 +296,57 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
     <div id="tab-publications" class="tab-panel">
 
       <!-- BANNER -->
-      <div style="background:var(--accent-light);border:1px solid var(--line);border-left:3px solid var(--accent);padding:1.5rem 2rem;margin-bottom:2.5rem;">
-        <div style="display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;margin-bottom:1.2rem;">
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">15</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Peer-reviewed<br>Publications</div>
+      <div class="stats">
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-num">16</div>
+            <div class="stat-label">Peer-reviewed Publications</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">8</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">First<br>Author Papers</div>
+          <div class="stat">
+            <div class="stat-num">8</div>
+            <div class="stat-label">First Author Papers</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">2</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Editorials</div>
+          <div class="stat">
+            <div class="stat-num">2</div>
+            <div class="stat-label">Editorials</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">5</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Conference<br>Proceedings</div>
+          <div class="stat">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Conference Proceedings</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">5</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Countries of<br>Collaboration</div>
+          <div class="stat">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Countries of Collaboration</div>
           </div>
         </div>
-        <div style="border-top:1px solid var(--line);padding-top:1rem;">
-          <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;">Key Skills</div>
-          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Scientific writing</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Multi-institutional collaboration</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Deadline management</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Large-scale data analysis</span>
+        <div class="stats-skills">
+          <div class="stats-skills-title">Key Skills</div>
+          <div class="tags">
+            <span class="tag">Scientific writing</span>
+            <span class="tag">Multi-institutional collaboration</span>
+            <span class="tag">Deadline management</span>
+            <span class="tag">Large-scale data analysis</span>
           </div>
         </div>
       </div>
       <div class="cv-section">
         <h2>Peer-Reviewed Publications</h2>
-        <div class="pub-item"><span class="pub-num">1.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Altman, R. M., De Vera, M., Goddard, K., Howard, F., Hu, X. J., Lai, A. S., Lo, A. C., McTaggart-Cowan, H., Oh, J., Rahman, M., Rassekh, S. R., Strahlendorf, C., Rayar, M., &amp; Peacock, S. (2026). 50-year trends in cancer incidence and mortality among adolescents and young adults in British Columbia, Canada. <a href="https://doi.org/10.1177/21565333261470581" target="_blank"><em>Journal of Adolescent and Young Adult Oncology</em></a>.</span></div>
-        <div class="pub-item"><span class="pub-num">2.</span><span class="pub-text"><strong>Mehareen, J.</strong>, &amp; Sadatsafavi, M. (2026). Catch ME (mild exacerbations) if you can: Rethinking the role of exacerbation severity in COPD risk assessment. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&sortby=pubdate&citation_for_view=DH1aoBIAAAAJ:4TOpqqG69KYC" target="_blank"><em>CHEST</em></a>. <span class="editorial">Editorial</span></span></div>
-        <div class="pub-item"><span class="pub-num">3.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Lim LHM, Adibi A, Amegadzie JE, Xia Y, De Vera MA, Law MR, Sin DD, Bhatt SP, Quint JK, &amp; Sadatsafavi, M. (2026). Performance of multivariable risk prediction algorithms in predicting COPD exacerbations: A population-based study. <a href="https://doi.org/10.1136/thorax-2026-224814" target="_blank"><em>Thorax</em></a>. Published Online First: 24 June 2026.</span></div>
-        <div class="pub-item"><span class="pub-num">4.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Sadatsafavi, M., Joshi, P., Carlsten, C., &amp; Amegadzie, J. E. (2026). The financial burden of prescribed medications in chronic obstructive pulmonary disease. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&sortby=pubdate&citation_for_view=DH1aoBIAAAAJ:kNdYIx-mwKoC" target="_blank"><em>CHEST Pulmonary</em></a>. 100277.</span></div>
-        <div class="pub-item"><span class="pub-num">5.</span><span class="pub-text"><strong>Mehareen, J.</strong>, &amp; Sadatsafavi, M. (2026). Exacerbations in COPD: Early patterns say much about what is to come. <a href="https://doi.org/10.1080/24745332.2026.2625755" target="_blank"><em>Canadian Journal of Respiratory, Critical Care, and Sleep Medicine</em></a>, 1&ndash;2. <span class="editorial">Editorial</span></span></div>
-        <div class="pub-item"><span class="pub-num">6.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Choy, K., Yin, Y., Sin, D. D., &amp; Sadatsafavi, M. (2025). Temporal trends and regional variations in the burden of COPD. <a href="https://doi.org/10.1080/24745332.2025.2576718" target="_blank"><em>Canadian Journal of Respiratory, Critical Care, and Sleep Medicine</em></a>.</span></div>
-        <div class="pub-item"><span class="pub-num">7.</span><span class="pub-text">Yin, Y., <strong>Mehareen, J.</strong>, Sadatsafavi, M., et al. (2026). Factors associated with guideline-concordant maintenance inhaled medication for COPD. <a href="https://doi.org/10.1136/thorax-2025-223544" target="_blank"><em>Thorax</em></a>, 81(3), 246&ndash;256.</span></div>
-        <div class="pub-item"><span class="pub-num">8.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Yin, Y., Choy, K., et al. (2025). Trends and regional differences in the use of maintenance inhaled medications in COPD. <a href="https://doi.org/10.1007/s11606-025-09703-3" target="_blank"><em>Journal of General Internal Medicine</em></a>, 1&ndash;4. <span class="research-letter">Research Letter</span></span></div>
-        <div class="pub-item"><span class="pub-num">9.</span><span class="pub-text">Amegadzie, J. E., <strong>Mehareen, J.</strong>, Khakban, A., Joshi, P., Carlsten, C., &amp; Sadatsafavi, M. (2024). Twenty-year trends in excess costs of COPD. <a href="https://doi.org/10.1183/13993003.00516-2024" target="_blank"><em>European Respiratory Journal</em></a>, 65(1):2400516.</span></div>
-        <div class="pub-item"><span class="pub-num">10.</span><span class="pub-text">Nowrin, I., <strong>Mehareen, J.</strong>, Bhattacharyya, D. S., &amp; Rahman, K. S. U. (2023). Community-based interventions to prevent stroke in LMICs: A systematic review. <a href="https://doi.org/10.1016/j.hsr.2023.100123" target="_blank"><em>Health Sciences Review</em></a>, 9.</span></div>
-        <div class="pub-item"><span class="pub-num">11.</span><span class="pub-text">Rahman, M. A., Dhira, T. A., Sarker, A. R., <strong>Mehareen, J.</strong> (2022). Validity and reliability of the PHQ-9 among university students of Bangladesh. <a href="https://doi.org/10.1371/journal.pone.0269634" target="_blank"><em>PLOS ONE</em></a>, 17(6).</span></div>
-        <div class="pub-item"><span class="pub-num">12.</span><span class="pub-text">Rabbani, A., <strong>Mehareen, J.</strong>, Chowdhury, I. A., &amp; Sarker, M. (2022). Mandatory employer-sponsored health financing scheme for semiformal workers in Bangladesh. <a href="https://doi.org/10.1016/j.socscimed.2021.114590" target="_blank"><em>Social Science &amp; Medicine</em></a>, 292.</span></div>
-        <div class="pub-item"><span class="pub-num">13.</span><span class="pub-text">Khatoon, R., et al. (2022). Aggregation, asymmetry, and common factors for Bangladesh's exchange rate&ndash;trade balance relation. <a href="https://doi.org/10.1007/s00181-021-02127-y" target="_blank"><em>Empirical Economics</em></a>, 62(6), 2739&ndash;2770.</span></div>
-        <div class="pub-item"><span class="pub-num">14.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Rahman, M. A., Dhira, T. A., &amp; Sarker, A. R. (2021). Prevalence and socio-demographic correlates of depression, anxiety, and co-morbidity during COVID-19. <a href="https://doi.org/10.1016/j.jadr.2021.100179" target="_blank"><em>Journal of Affective Disorders Reports</em></a>.</span></div>
-        <div class="pub-item"><span class="pub-num">15.</span><span class="pub-text">Dhira, T. A., Rahman, M. A., Sarker, A. R., <strong>Mehareen, J.</strong> (2021). Validity and reliability of the GAD-7 among university students of Bangladesh. <a href="https://doi.org/10.1371/journal.pone.0261590" target="_blank"><em>PLOS ONE</em></a>, 16(12).</span></div>
+        <div class="pub-item"><span class="pub-num">1.</span><span class="pub-text">Lim, L. H. M., <strong>Mehareen, J.</strong>, Adibi, A., Janson, C., Burgel, P.-R., Lee, T. Y., M&uuml;llerov&aacute;, H., Varghese, D., Marshall, J., Bhatt, S. P., Sin, D., Chen, W., Sadatsafavi, M., on behalf of the NOVELTY Scientific Community and NOVELTY study investigators (2026). ACCEPT 3.0: Recalibrating ACute COPD Exacerbation Prediction Tool (ACCEPT) for global use. <a href="https://doi.org/10.1186/s41512-026-00242-x" target="_blank"><em>Diagnostic and Prognostic Research</em></a>.</span></div>
+        <div class="pub-item"><span class="pub-num">2.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Altman, R. M., De Vera, M., Goddard, K., Howard, F., Hu, X. J., Lai, A. S., Lo, A. C., McTaggart-Cowan, H., Oh, J., Rahman, M., Rassekh, S. R., Strahlendorf, C., Rayar, M., &amp; Peacock, S. (2026). 50-year trends in cancer incidence and mortality among adolescents and young adults in British Columbia, Canada. <a href="https://doi.org/10.1177/21565333261470581" target="_blank"><em>Journal of Adolescent and Young Adult Oncology</em></a>.</span></div>
+        <div class="pub-item"><span class="pub-num">3.</span><span class="pub-text"><strong>Mehareen, J.</strong>, &amp; Sadatsafavi, M. (2026). Catch ME (mild exacerbations) if you can: Rethinking the role of exacerbation severity in COPD risk assessment. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&sortby=pubdate&citation_for_view=DH1aoBIAAAAJ:4TOpqqG69KYC" target="_blank"><em>CHEST</em></a>. <span class="editorial">Editorial</span></span></div>
+        <div class="pub-item"><span class="pub-num">4.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Lim LHM, Adibi A, Amegadzie JE, Xia Y, De Vera MA, Law MR, Sin DD, Bhatt SP, Quint JK, &amp; Sadatsafavi, M. (2026). Performance of multivariable risk prediction algorithms in predicting COPD exacerbations: A population-based study. <a href="https://doi.org/10.1136/thorax-2026-224814" target="_blank"><em>Thorax</em></a>. Published Online First: 24 June 2026.</span></div>
+        <div class="pub-item"><span class="pub-num">5.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Sadatsafavi, M., Joshi, P., Carlsten, C., &amp; Amegadzie, J. E. (2026). The financial burden of prescribed medications in chronic obstructive pulmonary disease. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&sortby=pubdate&citation_for_view=DH1aoBIAAAAJ:kNdYIx-mwKoC" target="_blank"><em>CHEST Pulmonary</em></a>. 100277.</span></div>
+        <div class="pub-item"><span class="pub-num">6.</span><span class="pub-text"><strong>Mehareen, J.</strong>, &amp; Sadatsafavi, M. (2026). Exacerbations in COPD: Early patterns say much about what is to come. <a href="https://doi.org/10.1080/24745332.2026.2625755" target="_blank"><em>Canadian Journal of Respiratory, Critical Care, and Sleep Medicine</em></a>, 1&ndash;2. <span class="editorial">Editorial</span></span></div>
+        <div class="pub-item"><span class="pub-num">7.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Choy, K., Yin, Y., Sin, D. D., &amp; Sadatsafavi, M. (2025). Temporal trends and regional variations in the burden of COPD. <a href="https://doi.org/10.1080/24745332.2025.2576718" target="_blank"><em>Canadian Journal of Respiratory, Critical Care, and Sleep Medicine</em></a>.</span></div>
+        <div class="pub-item"><span class="pub-num">8.</span><span class="pub-text">Yin, Y., <strong>Mehareen, J.</strong>, Sadatsafavi, M., et al. (2026). Factors associated with guideline-concordant maintenance inhaled medication for COPD. <a href="https://doi.org/10.1136/thorax-2025-223544" target="_blank"><em>Thorax</em></a>, 81(3), 246&ndash;256.</span></div>
+        <div class="pub-item"><span class="pub-num">9.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Yin, Y., Choy, K., et al. (2025). Trends and regional differences in the use of maintenance inhaled medications in COPD. <a href="https://doi.org/10.1007/s11606-025-09703-3" target="_blank"><em>Journal of General Internal Medicine</em></a>, 1&ndash;4. <span class="research-letter">Research Letter</span></span></div>
+        <div class="pub-item"><span class="pub-num">10.</span><span class="pub-text">Amegadzie, J. E., <strong>Mehareen, J.</strong>, Khakban, A., Joshi, P., Carlsten, C., &amp; Sadatsafavi, M. (2024). Twenty-year trends in excess costs of COPD. <a href="https://doi.org/10.1183/13993003.00516-2024" target="_blank"><em>European Respiratory Journal</em></a>, 65(1):2400516.</span></div>
+        <div class="pub-item"><span class="pub-num">11.</span><span class="pub-text">Nowrin, I., <strong>Mehareen, J.</strong>, Bhattacharyya, D. S., &amp; Rahman, K. S. U. (2023). Community-based interventions to prevent stroke in LMICs: A systematic review. <a href="https://doi.org/10.1016/j.hsr.2023.100123" target="_blank"><em>Health Sciences Review</em></a>, 9.</span></div>
+        <div class="pub-item"><span class="pub-num">12.</span><span class="pub-text">Rahman, M. A., Dhira, T. A., Sarker, A. R., <strong>Mehareen, J.</strong> (2022). Validity and reliability of the PHQ-9 among university students of Bangladesh. <a href="https://doi.org/10.1371/journal.pone.0269634" target="_blank"><em>PLOS ONE</em></a>, 17(6).</span></div>
+        <div class="pub-item"><span class="pub-num">13.</span><span class="pub-text">Rabbani, A., <strong>Mehareen, J.</strong>, Chowdhury, I. A., &amp; Sarker, M. (2022). Mandatory employer-sponsored health financing scheme for semiformal workers in Bangladesh. <a href="https://doi.org/10.1016/j.socscimed.2021.114590" target="_blank"><em>Social Science &amp; Medicine</em></a>, 292.</span></div>
+        <div class="pub-item"><span class="pub-num">14.</span><span class="pub-text">Khatoon, R., et al. (2022). Aggregation, asymmetry, and common factors for Bangladesh's exchange rate&ndash;trade balance relation. <a href="https://doi.org/10.1007/s00181-021-02127-y" target="_blank"><em>Empirical Economics</em></a>, 62(6), 2739&ndash;2770.</span></div>
+        <div class="pub-item"><span class="pub-num">15.</span><span class="pub-text"><strong>Mehareen, J.</strong>, Rahman, M. A., Dhira, T. A., &amp; Sarker, A. R. (2021). Prevalence and socio-demographic correlates of depression, anxiety, and co-morbidity during COVID-19. <a href="https://doi.org/10.1016/j.jadr.2021.100179" target="_blank"><em>Journal of Affective Disorders Reports</em></a>.</span></div>
+        <div class="pub-item"><span class="pub-num">16.</span><span class="pub-text">Dhira, T. A., Rahman, M. A., Sarker, A. R., <strong>Mehareen, J.</strong> (2021). Validity and reliability of the GAD-7 among university students of Bangladesh. <a href="https://doi.org/10.1371/journal.pone.0261590" target="_blank"><em>PLOS ONE</em></a>, 16(12).</span></div>
       </div>
       <div class="cv-section">
         <h2>Conference Publications</h2>
@@ -358,8 +357,9 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
         <div class="pub-item"><span class="pub-num">5.</span><span class="pub-text">Yin, Y., <strong>Mehareen, J.</strong>, Sadatsafavi, M., et al. Factors associated with guideline-concordant maintenance inhaled medication for COPD.</span></div>
       </div>
       <div class="cv-section">
-        <h2>Rapid Response &amp; Pre-print</h2>
+        <h2>Rapid Response &amp; Pre-prints</h2>
         <div class="pub-item"><span class="pub-num">RR</span><span class="pub-text"><strong>Mehareen, J.</strong>; Sadatsafavi, M. Rapid response to Jordan RE et al. (2026). <a href="https://www.bmj.com/content/392/bmj-2025-084521/rr-0" target="_blank"><em>BMJ</em></a>, 392:e084521.</span></div>
+        <div class="pub-item"><span class="pub-num">PP</span><span class="pub-text">Xia, Y., Sadatsafavi, M., <strong>Mehareen, J.</strong>, &amp; Gustafson, P. (2026). Bayesian additive regression trees for evaluating treatment benefit predictors using observational data. <a href="https://arxiv.org/abs/2609.21097" target="_blank"><em>arXiv</em></a>, 2609.21097.</span></div>
         <div class="pub-item"><span class="pub-num">PP</span><span class="pub-text"><strong>Mehareen, J.</strong>, Zhu, S., Sadatsafavi, M., &amp; Frank, E. Optimizing Communication Strategies for COPD Management. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DH1aoBIAAAAJ&citation_for_view=DH1aoBIAAAAJ:Se3iqnhoufwC" target="_blank"><em>medRxiv</em></a>, 2025.</span></div>
       </div>
     </div>
@@ -368,36 +368,36 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
     <div id="tab-presentations" class="tab-panel">
 
       <!-- BANNER -->
-      <div style="background:var(--accent-light);border:1px solid var(--line);border-left:3px solid var(--accent);padding:1.5rem 2rem;margin-bottom:2.5rem;">
-        <div style="display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;margin-bottom:1.2rem;">
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">20+</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Total<br>Presentations</div>
+      <div class="stats">
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-num">20+</div>
+            <div class="stat-label">Total Presentations</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">7</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Invited<br>Oral</div>
+          <div class="stat">
+            <div class="stat-num">7</div>
+            <div class="stat-label">Invited Oral</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">8+</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Posters</div>
+          <div class="stat">
+            <div class="stat-num">8+</div>
+            <div class="stat-label">Posters</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">5</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Countries</div>
+          <div class="stat">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Countries</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">3</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Continents</div>
+          <div class="stat">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Continents</div>
           </div>
         </div>
-        <div style="border-top:1px solid var(--line);padding-top:1rem;">
-          <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;">Key Skills</div>
-          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Scientific communication</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Stakeholder engagement</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Leadership</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Cross-functional collaboration</span>
+        <div class="stats-skills">
+          <div class="stats-skills-title">Key Skills</div>
+          <div class="tags">
+            <span class="tag">Scientific communication</span>
+            <span class="tag">Stakeholder engagement</span>
+            <span class="tag">Leadership</span>
+            <span class="tag">Cross-functional collaboration</span>
           </div>
         </div>
       </div>
@@ -406,113 +406,113 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
 
         <div class="pres-item">
           <div class="pres-title">Performance of multivariable risk prediction algorithms in predicting future COPD exacerbations: a population-based study</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">&#9675;</span><span><span class="pres-type poster" style="margin-right:0.5rem">Poster</span>European Respiratory Congress 2026 &middot; Session: Clinical complexity and treatment optimisation in airway diseases &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">Sep 2026</span> &middot; <a href="Posters/ERS_Poster_Thorax_September%202026.pdf" target="_blank" style="font-family:'DM Mono',monospace;font-size:0.7rem;">Link &#8599;</a></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type poster">Poster</span>European Respiratory Congress 2026 &middot; Session: Clinical complexity and treatment optimisation in airway diseases &middot; <span class="venue-date">Sep 2026</span> &middot; <a href="Posters/ERS_Poster_Thorax_September%202026.pdf" target="_blank" class="venue-link">Link &#8599;</a></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">Patient and physician evaluation of digital health decision support tool in COPD care</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">&#9675;</span><span><span class="pres-type poster" style="margin-right:0.5rem">Poster</span>European Respiratory Congress 2026 &middot; Session: From innovation to implementation: digital transformation of respiratory care pathways and trials &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">Sep 2026</span> &middot; <a href="Posters/ERS_Poster_patient%20and%20physician%20evaluation_September_2026.pdf" target="_blank" style="font-family:'DM Mono',monospace;font-size:0.7rem;">Link &#8599;</a></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type poster">Poster</span>European Respiratory Congress 2026 &middot; Session: From innovation to implementation: digital transformation of respiratory care pathways and trials &middot; <span class="venue-date">Sep 2026</span> &middot; <a href="Posters/ERS_Poster_patient%20and%20physician%20evaluation_September_2026.pdf" target="_blank" class="venue-link">Link &#8599;</a></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">Health and Economic Burden of Chronic Obstructive Pulmonary Disease</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">&#9675;</span><span><span class="pres-type oral" style="margin-right:0.5rem">Oral, Invited</span>Brown Bag Seminar Series, Department of Economics, East West University, Dhaka, Bangladesh &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">May 2026</span></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type oral">Oral, Invited</span>Brown Bag Seminar Series, Department of Economics, East West University, Dhaka, Bangladesh &middot; <span class="venue-date">May 2026</span></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">20-year trends in excess costs of asthma</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;margin-bottom:0.2rem;"><span style="color:var(--accent);font-size:0.7em;">○</span><span><span class="pres-type oral" style="margin-right:0.5rem">Oral, Invited</span>Science Spoken Succinctly Session, CTS Research Forum, Calgary, Canada &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">Apr 2026</span></span></div>
-            <div style="display:flex;align-items:baseline;gap:0.6rem;margin-bottom:0.2rem;"><span style="color:var(--accent);font-size:0.7em;">○</span><span><span class="pres-type poster" style="margin-right:0.5rem">Poster</span>Canadian Respiratory Conference 2026, Calgary, Canada &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">Apr 2026</span> &middot; <a href="Posters/CRC_Poster_asthma_April%202026.pdf" target="_blank" style="font-family:'DM Mono',monospace;font-size:0.7rem;">Link &#8599;</a></span></div>
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">○</span><span><span class="pres-type poster" style="margin-right:0.5rem">Poster</span>Health Economics Methodology Meeting, Canada &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">2026</span> &middot; <a href="Posters/CRC_Poster_asthma_April%202026.pdf" target="_blank" style="font-family:'DM Mono',monospace;font-size:0.7rem;">Link &#8599;</a></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type oral">Oral, Invited</span>Science Spoken Succinctly Session, CTS Research Forum, Calgary, Canada &middot; <span class="venue-date">Apr 2026</span></span></div>
+            <div class="venue"><span><span class="pres-type poster">Poster</span>Canadian Respiratory Conference 2026, Calgary, Canada &middot; <span class="venue-date">Apr 2026</span> &middot; <a href="Posters/CRC_Poster_asthma_April%202026.pdf" target="_blank" class="venue-link">Link &#8599;</a></span></div>
+            <div class="venue"><span><span class="pres-type poster">Poster</span>Health Economics Methodology Meeting, Canada &middot; <span class="venue-date">2026</span> &middot; <a href="Posters/CRC_Poster_asthma_April%202026.pdf" target="_blank" class="venue-link">Link &#8599;</a></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">Patient Engagement in Health Forecasting Research</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">&#9675;</span><span><span class="pres-type oral" style="margin-right:0.5rem">Oral, Invited</span>Towards Deeper Patient Engagement Workshop, Centre for Lung Health, Vancouver Coastal Health Research Institute &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">Jan 2026</span></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type oral">Oral, Invited</span>Towards Deeper Patient Engagement Workshop, Centre for Lung Health, Vancouver Coastal Health Research Institute &middot; <span class="venue-date">Jan 2026</span></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">Trends and Regional Differences in the Use of Maintenance Inhaled Medications in COPD</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">&#9675;</span><span><span class="pres-type poster" style="margin-right:0.5rem">Poster</span>European Respiratory Congress, Amsterdam, Netherlands &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">Sep 2025</span> &middot; <a href="Posters/ERS_Poster_MedicationTrend_October%202025.pdf" target="_blank" style="font-family:'DM Mono',monospace;font-size:0.7rem;">Link &#8599;</a></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type poster">Poster</span>European Respiratory Congress, Amsterdam, Netherlands &middot; <span class="venue-date">Sep 2025</span> &middot; <a href="Posters/ERS_Poster_MedicationTrend_October%202025.pdf" target="_blank" class="venue-link">Link &#8599;</a></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">The Financial Burden of Prescribed Medications in COPD</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">&#9675;</span><span><span class="pres-type poster" style="margin-right:0.5rem">Poster</span>Health Economics Methodology Meeting, UBC, Vancouver &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">Jun 2025</span></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type poster">Poster</span>Health Economics Methodology Meeting, UBC, Vancouver &middot; <span class="venue-date">Jun 2025</span></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">Optimizing Communication Strategies for COPD Management</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">&#9675;</span><span><span class="pres-type poster" style="margin-right:0.5rem">Poster</span>ISPOR 2025, Montreal, Canada &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">May 2025</span> &middot; <a href="Posters/ISPOR_Poster_Communication%20Strategies_May%202025.pdf" target="_blank" style="font-family:'DM Mono',monospace;font-size:0.7rem;">Link &#8599;</a></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type poster">Poster</span>ISPOR 2025, Montreal, Canada &middot; <span class="venue-date">May 2025</span> &middot; <a href="Posters/ISPOR_Poster_Communication%20Strategies_May%202025.pdf" target="_blank" class="venue-link">Link &#8599;</a></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">Designing Holistic Wellness Retreats for Graduate Students: Insights from a Campus-wide Survey</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">&#9675;</span><span><span class="pres-type oral" style="margin-right:0.5rem">Oral</span>Healthy Minds | Healthy Campuses Summit (Online) &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">Feb 2025</span></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type oral">Oral</span>Healthy Minds | Healthy Campuses Summit (Online) &middot; <span class="venue-date">Feb 2025</span></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">Regional Variations in Burden and Patterns of Care for COPD in British Columbia</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;margin-bottom:0.2rem;"><span style="color:var(--accent);font-size:0.7em;">○</span><span><span class="pres-type oral" style="margin-right:0.5rem">Oral, Invited</span>New Kids on the Block Session, Canadian Respiratory Conference, Quebec, Canada &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">2025</span></span></div>
-            <div style="display:flex;align-items:baseline;gap:0.6rem;margin-bottom:0.2rem;"><span style="color:var(--accent);font-size:0.7em;">○</span><span><span class="pres-type rapidfire" style="margin-right:0.5rem">Rapid Fire</span>Better Breathing Week, Lung Health Foundation, Toronto, Canada &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">2025</span> &middot; <a href="Posters/BBW_Poster_Regional%20variation%20trend_January%202025.pdf" target="_blank" style="font-family:'DM Mono',monospace;font-size:0.7rem;">Link &#8599;</a></span></div>
-            <div style="display:flex;align-items:baseline;gap:0.6rem;margin-bottom:0.2rem;"><span style="color:var(--accent);font-size:0.7em;">○</span><span><span class="pres-type oral" style="margin-right:0.5rem">Oral, Invited</span>Research Works in Progress Session, Centre for Lung Health, Vancouver &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">2024</span></span></div>
-            <div style="display:flex;align-items:baseline;gap:0.6rem;margin-bottom:0.2rem;"><span style="color:var(--accent);font-size:0.7em;">○</span><span><span class="pres-type rapidfire" style="margin-right:0.5rem">Rapid Fire</span>Canadian Respiratory Research Network Annual Meeting, Ottawa &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">2024</span> &middot; <a href="Posters/CRRN_Poster_Regional%20variation%20trend_October_2024.pdf" target="_blank" style="font-family:'DM Mono',monospace;font-size:0.7rem;">Link &#8599;</a></span></div>
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">○</span><span><span class="pres-type oral" style="margin-right:0.5rem">Oral</span>CORE Team Meeting, Faculty of Pharmaceutical Sciences, UBC &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">2024</span></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type oral">Oral, Invited</span>New Kids on the Block Session, Canadian Respiratory Conference, Quebec, Canada &middot; <span class="venue-date">2025</span></span></div>
+            <div class="venue"><span><span class="pres-type rapidfire">Rapid Fire</span>Better Breathing Week, Lung Health Foundation, Toronto, Canada &middot; <span class="venue-date">2025</span> &middot; <a href="Posters/BBW_Poster_Regional%20variation%20trend_January%202025.pdf" target="_blank" class="venue-link">Link &#8599;</a></span></div>
+            <div class="venue"><span><span class="pres-type oral">Oral, Invited</span>Research Works in Progress Session, Centre for Lung Health, Vancouver &middot; <span class="venue-date">2024</span></span></div>
+            <div class="venue"><span><span class="pres-type rapidfire">Rapid Fire</span>Canadian Respiratory Research Network Annual Meeting, Ottawa &middot; <span class="venue-date">2024</span> &middot; <a href="Posters/CRRN_Poster_Regional%20variation%20trend_October_2024.pdf" target="_blank" class="venue-link">Link &#8599;</a></span></div>
+            <div class="venue"><span><span class="pres-type oral">Oral</span>CORE Team Meeting, Faculty of Pharmaceutical Sciences, UBC &middot; <span class="venue-date">2024</span></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">50-year Cancer Incidence and Mortality Trends in Adolescents and Young Adults in BC</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;margin-bottom:0.2rem;"><span style="color:var(--accent);font-size:0.7em;">○</span><span><span class="pres-type invited" style="margin-right:0.5rem">Invited Webinar</span>Canadian Cancer Survivorship Research Consortium &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">2024</span> &middot; <a href="https://www.youtube.com/watch?v=3W7v1E4BTYw&amp;t=899s" target="_blank" style="font-family:'DM Mono',monospace;font-size:0.7rem;">Recording &#8599;</a></span></div>
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">○</span><span><span class="pres-type poster" style="margin-right:0.5rem">Poster</span>BC Cancer Summit, Vancouver &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">2024</span> &middot; <a href="Posters/BC%20Cancer%20Summit_Poster_November%202024.pdf" target="_blank" style="font-family:'DM Mono',monospace;font-size:0.7rem;">Link &#8599;</a></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type invited">Invited Webinar</span>Canadian Cancer Survivorship Research Consortium &middot; <span class="venue-date">2024</span> &middot; <a href="https://www.youtube.com/watch?v=3W7v1E4BTYw&amp;t=899s" target="_blank" class="venue-link">Recording &#8599;</a></span></div>
+            <div class="venue"><span><span class="pres-type poster">Poster</span>BC Cancer Summit, Vancouver &middot; <span class="venue-date">2024</span> &middot; <a href="Posters/BC%20Cancer%20Summit_Poster_November%202024.pdf" target="_blank" class="venue-link">Link &#8599;</a></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">Twenty-year Trends in Excess Costs of COPD</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">&#9675;</span><span><span class="pres-type oral" style="margin-right:0.5rem">Oral, Co-presenter</span>CORE Team Meeting, UBC &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">2024</span></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type oral">Oral, Co-presenter</span>CORE Team Meeting, UBC &middot; <span class="venue-date">2024</span></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">Budget Impact Analysis of Pneumococcal Conjugate Vaccines in US Adults</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">&#9675;</span><span><span class="pres-type invited" style="margin-right:0.5rem">Invited Discussant</span>Health Economics Methodology Meeting, Vancouver &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">2023</span></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type invited">Invited Discussant</span>Health Economics Methodology Meeting, Vancouver &middot; <span class="venue-date">2023</span></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">Overview of the Childhood, Adolescent, and Young Adult Cancer Survivors Program</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">&#9675;</span><span><span class="pres-type oral" style="margin-right:0.5rem">Oral</span>Cancer Control Research Seminar, Vancouver &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">2023</span></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type oral">Oral</span>Cancer Control Research Seminar, Vancouver &middot; <span class="venue-date">2023</span></span></div>
           </div>
         </div>
 
         <div class="pres-item">
           <div class="pres-title">The Influence of University Image in Alumni Expectations and Satisfaction</div>
-          <div style="margin-top:0.4rem;font-size:1rem;font-weight:300;line-height:1.8;">
-            <div style="display:flex;align-items:baseline;gap:0.6rem;"><span style="color:var(--accent);font-size:0.7em;">&#9675;</span><span><span class="pres-type oral" style="margin-right:0.5rem">Oral</span>International Symposium on Student Satisfaction and Quality of Higher Education, East West University, Bangladesh &middot; <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);">2021</span></span></div>
+          <div class="pres-venues">
+            <div class="venue"><span><span class="pres-type oral">Oral</span>International Symposium on Student Satisfaction and Quality of Higher Education, East West University, Bangladesh &middot; <span class="venue-date">2021</span></span></div>
           </div>
         </div>
       </div>
@@ -522,61 +522,61 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
     <div id="tab-awards" class="tab-panel">
 
       <!-- BANNER -->
-      <div style="background:var(--accent-light);border:1px solid var(--line);border-left:3px solid var(--accent);padding:1.5rem 2rem;margin-bottom:2.5rem;">
-        <div style="display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;margin-bottom:1.2rem;">
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">20+</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Awards &amp;<br>Scholarships</div>
+      <div class="stats">
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-num">20+</div>
+            <div class="stat-label">Awards &amp; Scholarships</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">$170K+</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Total Funding<br>During PhD</div>
+          <div class="stat">
+            <div class="stat-num">$170K+</div>
+            <div class="stat-label">Total Funding During PhD</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">9+</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Funding<br>Sources</div>
+          <div class="stat">
+            <div class="stat-num">9+</div>
+            <div class="stat-label">Funding Sources</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">6</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Travel<br>Awards</div>
+          <div class="stat">
+            <div class="stat-num">6</div>
+            <div class="stat-label">Travel Awards</div>
           </div>
         </div>
-        <div style="border-top:1px solid var(--line);padding-top:1rem;">
-          <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;">Key Funding Organizations</div>
-          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">CIHR</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">SSHRC</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">MITACS</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Canadian Lung Association</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">UBC</span>
+        <div class="stats-skills">
+          <div class="stats-skills-title">Key Funding Organizations</div>
+          <div class="tags">
+            <span class="tag">CIHR</span>
+            <span class="tag">SSHRC</span>
+            <span class="tag">MITACS</span>
+            <span class="tag">Canadian Lung Association</span>
+            <span class="tag">UBC</span>
           </div>
         </div>
       </div>
       <div class="cv-section">
         <h2>Awards &amp; Scholarships</h2>
-        <div class="award-item"><span>Canada Graduate Research Scholarship-Doctoral Program (CIHR CGRS-D)<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$120,000 over 3 years</span></span><span class="award-year">2026&ndash;2029</span></div>
+        <div class="award-item"><span>Canada Graduate Research Scholarship-Doctoral Program (CIHR CGRS-D)<span class="award-amount">$120,000 over 3 years</span></span><span class="award-year">2026&ndash;2029</span></div>
         <div class="award-item"><span>Four Year Doctoral Fellowship (4YF), UBC</span><span class="award-year">2026&ndash;2029</span></div>
-        <div class="award-item"><span>Canada Research Training Awards Suite &ndash; Research Travel Supplement (CRTAS-RTS), CIHR<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$9,000</span></span><span class="award-year">2026</span></div>
-        <div class="award-item"><span>Graduate Teaching Assistant Excellence Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$100</span></span><span class="award-year">2026</span></div>
-        <div class="award-item"><span>shAIRe Rising Stars Professional Development Award<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">Scientific &amp; Health Data Assets in Respiratory Research (shAIRe) &middot; $2,593.30</span></span><span class="award-year">2026</span></div>
-        <div class="award-item"><span>Go Global Self-Directed Research Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$1,000</span></span><span class="award-year">2026</span></div>
+        <div class="award-item"><span>Canada Research Training Awards Suite &ndash; Research Travel Supplement (CRTAS-RTS), CIHR<span class="award-amount">$9,000</span></span><span class="award-year">2026</span></div>
+        <div class="award-item"><span>Graduate Teaching Assistant Excellence Award, UBC<span class="award-amount">$100</span></span><span class="award-year">2026</span></div>
+        <div class="award-item"><span>shAIRe Rising Stars Professional Development Award<span class="award-amount">Scientific &amp; Health Data Assets in Respiratory Research (shAIRe) &middot; $2,593.30</span></span><span class="award-year">2026</span></div>
+        <div class="award-item"><span>Go Global Self-Directed Research Award, UBC<span class="award-amount">$1,000</span></span><span class="award-year">2026</span></div>
         <div class="award-item"><span>"Most Dedicated Work-Learn" Award, GSS, UBC</span><span class="award-year">2026</span></div>
-        <div class="award-item"><span>MITACS Globalink Research Award Abroad<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$6,000</span></span><span class="award-year">2026</span></div>
-        <div class="award-item"><span>UBC KxM Research to Impact Award<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$500</span></span><span class="award-year">2025</span></div>
-        <div class="award-item"><span>Graduate Student Professional Development Award, Pharmaceutical Sciences, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$500</span></span><span class="award-year">2025</span></div>
-        <div class="award-item"><span>Pharmaceutical Sciences Graduate Student Service Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$200</span></span><span class="award-year">2024&ndash;2026</span></div>
-        <div class="award-item"><span>Graduate Student Travel Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$500</span></span><span class="award-year">2025</span></div>
-        <div class="award-item"><span>Douglas and Jean Bailey Scholarship, Faculty of Pharmaceutical Sciences, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$2,214</span></span><span class="award-year">2025</span></div>
-        <div class="award-item"><span>Better Breathing Week Student Travel Award, Lung Health Foundation<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$1,100</span></span><span class="award-year">2025</span></div>
-        <div class="award-item"><span>Studentship Award, Canadian Lung Association<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$10,500</span></span><span class="award-year">2024&ndash;2025</span></div>
-        <div class="award-item"><span>Trainee Salary Stipend Award, BC Respiratory Health Network<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$5,000</span></span><span class="award-year">2024</span></div>
-        <div class="award-item"><span>Symposium Travel Award, Canada&rsquo;s Drug Agency<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$3,100</span></span><span class="award-year">2024</span></div>
-        <div class="award-item"><span>Faculty of Pharmaceutical Sciences Graduate Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$5,660</span></span><span class="award-year">2023&ndash;2025</span></div>
-        <div class="award-item"><span>President&rsquo;s Academic Excellence Initiative PhD Award, UBC<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$3,735</span></span><span class="award-year">2023&ndash;2026</span></div>
-        <div class="award-item"><span>Bangladesh Sweden Trust Fund, Ministry of Finance, Bangladesh<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">Airfare support</span></span><span class="award-year">2022</span></div>
-        <div class="award-item"><span>Canada Graduate Scholarships &ndash; Master&rsquo;s (SSHRC CGS-M)<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$17,500</span></span><span class="award-year">2022&ndash;2023</span></div>
-        <div class="award-item"><span>Special Graduate Entrance Award, Simon Fraser University<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$2,000</span></span><span class="award-year">2021</span></div>
-        <div class="award-item"><span>GPS Graduate Fellowship, Simon Fraser University<br><span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);">$3,000</span></span><span class="award-year">2021</span></div>
+        <div class="award-item"><span>MITACS Globalink Research Award Abroad<span class="award-amount">$6,000</span></span><span class="award-year">2026</span></div>
+        <div class="award-item"><span>UBC KxM Research to Impact Award<span class="award-amount">$500</span></span><span class="award-year">2025</span></div>
+        <div class="award-item"><span>Graduate Student Professional Development Award, Pharmaceutical Sciences, UBC<span class="award-amount">$500</span></span><span class="award-year">2025</span></div>
+        <div class="award-item"><span>Pharmaceutical Sciences Graduate Student Service Award, UBC<span class="award-amount">$200</span></span><span class="award-year">2024&ndash;2026</span></div>
+        <div class="award-item"><span>Graduate Student Travel Award, UBC<span class="award-amount">$500</span></span><span class="award-year">2025</span></div>
+        <div class="award-item"><span>Douglas and Jean Bailey Scholarship, Faculty of Pharmaceutical Sciences, UBC<span class="award-amount">$2,214</span></span><span class="award-year">2025</span></div>
+        <div class="award-item"><span>Better Breathing Week Student Travel Award, Lung Health Foundation<span class="award-amount">$1,100</span></span><span class="award-year">2025</span></div>
+        <div class="award-item"><span>Studentship Award, Canadian Lung Association<span class="award-amount">$10,500</span></span><span class="award-year">2024&ndash;2025</span></div>
+        <div class="award-item"><span>Trainee Salary Stipend Award, BC Respiratory Health Network<span class="award-amount">$5,000</span></span><span class="award-year">2024</span></div>
+        <div class="award-item"><span>Symposium Travel Award, Canada&rsquo;s Drug Agency<span class="award-amount">$3,100</span></span><span class="award-year">2024</span></div>
+        <div class="award-item"><span>Faculty of Pharmaceutical Sciences Graduate Award, UBC<span class="award-amount">$5,660</span></span><span class="award-year">2023&ndash;2025</span></div>
+        <div class="award-item"><span>President&rsquo;s Academic Excellence Initiative PhD Award, UBC<span class="award-amount">$3,735</span></span><span class="award-year">2023&ndash;2026</span></div>
+        <div class="award-item"><span>Bangladesh Sweden Trust Fund, Ministry of Finance, Bangladesh<span class="award-amount">Airfare support</span></span><span class="award-year">2022</span></div>
+        <div class="award-item"><span>Canada Graduate Scholarships &ndash; Master&rsquo;s (SSHRC CGS-M)<span class="award-amount">$17,500</span></span><span class="award-year">2022&ndash;2023</span></div>
+        <div class="award-item"><span>Special Graduate Entrance Award, Simon Fraser University<span class="award-amount">$2,000</span></span><span class="award-year">2021</span></div>
+        <div class="award-item"><span>GPS Graduate Fellowship, Simon Fraser University<span class="award-amount">$3,000</span></span><span class="award-year">2021</span></div>
       </div>
       <div class="cv-section">
         <h2>Competition</h2>
@@ -598,39 +598,39 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
     <div id="tab-teaching" class="tab-panel">
 
       <!-- BANNER -->
-      <div style="background:var(--accent-light);border:1px solid var(--line);border-left:3px solid var(--accent);padding:1.5rem 2rem;margin-bottom:2.5rem;">
-        <div style="display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;margin-bottom:1.2rem;">
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">8</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Teaching<br>Roles</div>
+      <div class="stats">
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-num">8</div>
+            <div class="stat-label">Teaching Roles</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">15+</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Courses<br>Taught</div>
+          <div class="stat">
+            <div class="stat-num">15+</div>
+            <div class="stat-label">Courses Taught</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">3</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Universities</div>
+          <div class="stat">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Universities</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">3</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Disciplines</div>
+          <div class="stat">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Disciplines</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">3</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Mentorship<br>Roles</div>
+          <div class="stat">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Mentorship Roles</div>
           </div>
         </div>
-        <div style="border-top:1px solid var(--line);padding-top:1rem;">
-          <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;">Key Skills</div>
-          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Curriculum development</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">R &amp; statistical software instruction</span>
+        <div class="stats-skills">
+          <div class="stats-skills-title">Key Skills</div>
+          <div class="tags">
+            <span class="tag">Curriculum development</span>
+            <span class="tag">R &amp; statistical software instruction</span>
             
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Mentoring &amp; student supervision</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Inclusive &amp; accessibility-focused tutoring</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Lecture &amp; workshop delivery</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Assessment design</span>
+            <span class="tag">Mentoring &amp; student supervision</span>
+            <span class="tag">Inclusive &amp; accessibility-focused tutoring</span>
+            <span class="tag">Lecture &amp; workshop delivery</span>
+            <span class="tag">Assessment design</span>
           </div>
         </div>
       </div>
@@ -642,7 +642,7 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
           <div class="entry-body"><ul>
             <li><strong>PHAR 305:</strong> Clinical Epidemiology and Pharmaceutical Outcomes II &middot; delivered two guest lectures including an R-workshop</li>
           </ul>
-          <div style="margin-top:0.4rem;font-size:0.92rem;color:var(--muted);">Achieved CIRTL associate status.</div></div>
+          <div class="note">Achieved CIRTL associate status.</div></div>
         </div>
         <div class="entry">
           <div class="entry-header"><span class="entry-title">Graduate Teaching Assistant</span><span class="entry-date">2025 &ndash; 2026</span></div>
@@ -661,7 +661,7 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
             <li><strong>PHAR 211:</strong> Medication Management</li>
             <li><strong>PHAR 305:</strong> Clinical Epidemiology and Pharmaceutical Outcomes II</li>
           </ul>
-          <div style="margin-top:0.4rem;font-size:0.92rem;color:var(--muted);">Led R workshops, held office hours, and graded critical appraisals and course projects.</div></div>
+          <div class="note">Led R workshops, held office hours, and graded critical appraisals and course projects.</div></div>
         </div>
         <div class="entry">
           <div class="entry-header"><span class="entry-title">Graduate Teaching Assistant</span><span class="entry-date">2021 &ndash; 2023</span></div>
@@ -681,7 +681,7 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
             <li><strong>ECON 115:</strong> Introduction to Macroeconomics</li>
             <li><strong>ECON 201:</strong> Microeconomic Theory I: Competitive Behavior</li>
           </ul>
-          <div style="margin-top:0.4rem;font-size:0.92rem;color:var(--muted);">Tutored student-athletes, Indigenous students, WUSC students, and Uggla Family Scholars.</div></div>
+          <div class="note">Tutored student-athletes, Indigenous students, WUSC students, and Uggla Family Scholars.</div></div>
         </div>
         <div class="entry">
           <div class="entry-header"><span class="entry-title">Economics Tutor</span><span class="entry-date">2022 &ndash; 2023</span></div>
@@ -698,7 +698,7 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
             <li><strong>BUS 101:</strong> Statistics for Business and Economics</li>
             <li><strong>ECON 304:</strong> Economics of Health</li>
           </ul>
-          <div style="margin-top:0.4rem;font-size:0.92rem;color:var(--muted);">Contributed to curriculum development and supervised undergraduate research projects.</div></div>
+          <div class="note">Contributed to curriculum development and supervised undergraduate research projects.</div></div>
         </div>
         <div class="entry">
           <div class="entry-header"><span class="entry-title">Graduate Teaching Fellow</span><span class="entry-date">2016</span></div>
@@ -706,7 +706,7 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
           <div class="entry-body"><ul>
             <li><strong>Module:</strong> Health Economics and Health Care Financing Strategy</li>
           </ul>
-          <div style="margin-top:0.4rem;font-size:0.92rem;color:var(--muted);">Prepared course materials and guided students in fieldwork.</div></div>
+          <div class="note">Prepared course materials and guided students in fieldwork.</div></div>
         </div>
       </div>
 
@@ -734,32 +734,33 @@ footer p{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.12em
     <div id="tab-service" class="tab-panel">
 
       <!-- BANNER -->
-      <div style="background:var(--accent-light);border:1px solid var(--line);border-left:3px solid var(--accent);padding:1.5rem 2rem;margin-bottom:2.5rem;">
-        <div style="display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;margin-bottom:1.2rem;">
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">21</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Manuscripts<br>Reviewed</div>
+      <div class="stats">
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-num">21</div>
+            <div class="stat-label">Manuscripts Reviewed</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">10+</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Committee &amp;<br>Leadership Roles</div>
+          <div class="stat">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Committee &amp; Leadership Roles</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">6</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Moderation &amp;<br>Facilitation Sessions</div>
+          <div class="stat">
+            <div class="stat-num">6</div>
+            <div class="stat-label">Moderation &amp; Facilitation Sessions</div>
           </div>
-          <div style="text-align:center;">
-            <div style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent);line-height:1;">4</div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Professional<br>Societies</div>
-          </div>        </div>
-        <div style="border-top:1px solid var(--line);padding-top:1rem;">
-          <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;">Key Skills</div>
-          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Peer review</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Committee leadership &amp; governance</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Community &amp; patient engagement</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Workshop facilitation</span>
-            <span style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border:1px solid var(--accent);color:var(--accent);background:white;">Equity, diversity &amp; inclusion advocacy</span>
+          <div class="stat">
+            <div class="stat-num">4</div>
+            <div class="stat-label">Professional Societies</div>
+          </div>
+        </div>
+        <div class="stats-skills">
+          <div class="stats-skills-title">Key Skills</div>
+          <div class="tags">
+            <span class="tag">Peer review</span>
+            <span class="tag">Committee leadership &amp; governance</span>
+            <span class="tag">Community &amp; patient engagement</span>
+            <span class="tag">Workshop facilitation</span>
+            <span class="tag">Equity, diversity &amp; inclusion advocacy</span>
           </div>
         </div>
       </div>
